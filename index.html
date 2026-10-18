@@ -508,6 +508,7 @@ footer { padding-block: 32px 64px; border-top: 1px solid var(--line); }
             </svg>
           </div>
           <p class="sub">So the fairness question changes from <b>"Was I treated equally?"</b> to <b>"Was this relationship kept in balance?"</b></p>
+          <p class="note">A broad tendency, not a rule. Based on Confucian role ethics (R. Ames, <i>Confucian Role Ethics</i>, 2011) and Watsuji's "betweenness" (Stanford Encyclopedia of Philosophy). Western thought also has relational strands, such as care ethics.</p>
         </div>
       </div>
 
@@ -523,6 +524,7 @@ footer { padding-block: 32px 64px; border-top: 1px solid var(--line); }
               <div class="kicker">Fairness means</div>
               <div class="eq" id="tradEq"></div>
               <div class="where" id="tradWhere"></div>
+              <div class="where" id="tradSrc"></div>
             </div>
           </div>
         </div>
@@ -533,6 +535,7 @@ footer { padding-block: 32px 64px; border-top: 1px solid var(--line); }
         <div class="step-n">3</div>
         <div class="step-body">
           <h3>How each region compares with the West</h3>
+          <p class="sub">My interpretive ratings on six parameters, drawn from the traditions above. Hover an axis name for its meaning.</p>
           <div class="tabs" id="regionTabs" aria-label="Region"></div>
           <div class="figure">
             <svg id="radar" viewBox="0 0 520 400" role="img" aria-label="Radar chart comparing the selected Asian region with the West on six parameters"></svg>
@@ -543,7 +546,7 @@ footer { padding-block: 32px 64px; border-top: 1px solid var(--line); }
             <button class="linkbtn" id="radarTableBtn" type="button" aria-expanded="false">Show as table</button>
           </div>
           <div class="tablewrap" id="radarTable" hidden></div>
-          <p class="note">Ratings 0–10 are my interpretive scores for class discussion, not measured data. Each region is internally diverse.</p>
+          <p class="note"><b>Important:</b> these 0–10 ratings are my own interpretive judgement for class discussion. They do not come from a survey or a published index. Each region is internally diverse.</p>
         </div>
       </div>
     </div>
@@ -701,7 +704,11 @@ footer { padding-block: 32px 64px; border-top: 1px solid var(--line); }
         <li><a href="https://engagemedia.org/?p=22981">EngageMedia: Alternative ethical frameworks for AI</a></li>
         <li><a href="https://scholars.hkbu.edu.hk/en/publications/introduction-the-significance-of-east-west-dialogue-on-artificial/">HKBU: East–West dialogue on AI ethics</a></li>
         <li><a href="https://www.wgbh.org/news/2018-02-16/what-can-ai-learn-from-non-western-philosophies">WGBH: What can AI learn from non-Western philosophies?</a></li>
-        <li>Confucius, <i>Analects</i> 15.24 · Laozi, <i>Daodejing</i> 77 · Watsuji, <i>Rinrigaku</i> · Sen, <i>The Idea of Justice</i> (2009) · Rawls, <i>A Theory of Justice</i> (1971)</li>
+        <li>Confucius, <i>Analects</i> 13.23, 15.24 · Mencius 1B:8, 3A:4 · Laozi, <i>Daodejing</i> ch. 77 (trans. D.C. Lau) · Watsuji, <i>Rinrigaku</i> · Sen, <i>The Idea of Justice</i> (2009) · Rawls, <i>A Theory of Justice</i> (1971)</li>
+        <li><a href="https://www.centertao.org/essays/tao-te-ching/dc-lau/chapter-77-commentary/">Daodejing ch. 77, D.C. Lau translation and commentary</a></li>
+        <li><a href="https://plato.stanford.edu/entries/watsuji-tetsuro/">Stanford Encyclopedia of Philosophy: Watsuji Tetsurō</a></li>
+        <li><a href="https://mkgandhi-sarvodaya.org/gandhi's_talisman.htm">Gandhi's Talisman (1948)</a></li>
+        <li>R. Ames, <i>Confucian Role Ethics: A Vocabulary</i> (2011) · Qur'an 2:30, 4:58, 16:90 · Seventeen-Article Constitution (604)</li>
       </ol>
     </div>
   </section>
@@ -845,23 +852,29 @@ footer { padding-block: 32px 64px; border-top: 1px solid var(--line); }
   /* ---------- traditions ---------- */
   var TRADS = [
     { id: "conf", name: "Confucian", where: "China · Korea · Japan · Vietnam · Singapore",
-      eq: "Give each relationship what it is owed. The stronger side carries the heavier duty.",
-      terms: [["仁 ren", "Humaneness, care for others"], ["礼 li", "Proper conduct in each role"], ["恕 shu", "Don't do to others what you wouldn't want"], ["和 he", "Harmony, not sameness"]] },
+      eq: "Each relationship carries duties on both sides. A ruler who harms the people loses the right to rule.",
+      src: "Analects 13.23, 15.24 (15.23 in some editions); Mencius 3A:4, 1B:8",
+      terms: [["仁 ren", "Humaneness, care for others"], ["礼 li", "Proper conduct in each role"], ["恕 shu", "Don't do to others what you wouldn't want (Analects 15.24)"], ["和 he", "Harmony, not sameness (Analects 13.23)"]] },
     { id: "bud", name: "Buddhist", where: "South, Southeast & East Asia",
-      eq: "Reduce suffering for every being. Taking unfair advantage is a kind of greed.",
-      terms: [["Interdependence", "Nothing exists on its own"], ["karuṇā", "Compassion"], ["ahiṃsā", "Do no harm"], ["Middle Way", "Avoid extremes"]] },
+      eq: "Reduce suffering for all sentient beings. Greed is one of the three roots of harm.",
+      src: "Pali Canon: the first sermon (Middle Way); the three roots: greed, hatred, delusion",
+      terms: [["Interdependence", "Nothing exists on its own (pratītyasamutpāda)"], ["karuṇā", "Compassion"], ["ahiṃsā", "Non-harm; the first precept"], ["Middle Way", "Avoid extremes"]] },
     { id: "dao", name: "Daoist", where: "China",
-      eq: "Keep balance. Excess taken from others should flow back.",
-      terms: [["道 Dao", "The natural way"], ["自然 ziran", "Let things be as they are"], ["無為 wu wei", "Act without forcing"], ["Daodejing 77", "Heaven takes from excess, gives to lack"]] },
+      eq: "Keep balance. Nature reduces excess and makes up what is lacking; people often do the reverse.",
+      src: "Laozi, Daodejing ch. 77 (trans. D.C. Lau)",
+      terms: [["道 Dao", "The Way, the natural order"], ["自然 ziran", "Being so of itself; naturalness"], ["無為 wu wei", "Acting without forcing"], ["道德經 Daodejing", "The classic attributed to Laozi (also \"Tao Te Ching\"). Ch. 77 compares nature to drawing a bow."]] },
     { id: "ind", name: "Indian", where: "India · Nepal · Sri Lanka",
-      eq: "Judge by real outcomes in people's lives, starting with the weakest.",
-      terms: [["dharma", "Duty that fits your role"], ["karma", "Actions have consequences"], ["sarvodaya", "Welfare of all (Gandhi)"], ["nyāya", "Justice as lived (Sen)"]] },
+      eq: "Judge by real outcomes in people's lives, starting with the poorest and weakest.",
+      src: "Gandhi's Talisman (1948); Amartya Sen, The Idea of Justice (2009)",
+      terms: [["dharma", "Duty that fits your role"], ["karma", "Actions have consequences"], ["sarvodaya", "Welfare of all (Gandhi)"], ["nyāya", "Justice as it is actually lived (Sen)"]] },
     { id: "jp", name: "Japanese", where: "Japan",
       eq: "Keep trust and harmony between people, and respect nature.",
-      terms: [["和 wa", "Harmony (Shōtoku, 604)"], ["間柄 aidagara", "\"Betweenness\" (Watsuji)"], ["kami", "The sacred in nature"], ["Consensus", "Settle disputes by mediation"]] },
+      src: "Seventeen-Article Constitution (604), Art. 1; Watsuji, Rinrigaku (1937–49); Civil Conciliation Act (1951)",
+      terms: [["和 wa", "Harmony; Art. 1 of the Seventeen-Article Constitution (604, attributed to Prince Shōtoku)"], ["間柄 aidagara", "\"Betweenness\": a person exists through relations (Watsuji)"], ["神 kami", "The sacred, often found in nature (Shinto)"], ["調停 chōtei", "Court conciliation, a common way to settle civil disputes"]] },
     { id: "isl", name: "Islamic", where: "Indonesia · Malaysia · Pakistan · Bangladesh",
       eq: "Power and resources are held in trust, for people and creation.",
-      terms: [["ʿadl", "Justice and balance"], ["amānah", "Power as a trust"], ["khalīfa", "Stewards of the earth"], ["maṣlaḥa", "The public good"]] }
+      src: "Qur'an 16:90, 4:58, 2:30; al-Ghazālī on maṣlaḥa",
+      terms: [["ʿadl", "Justice and balance (Qur'an 16:90)"], ["amānah", "A trust, to be returned justly (Qur'an 4:58)"], ["khalīfa", "Steward on earth (Qur'an 2:30)"], ["maṣlaḥa", "The public interest"]] }
   ];
   var tradTabs = $("tradTabs");
   function setTrad(i) {
@@ -869,7 +882,7 @@ footer { padding-block: 32px 64px; border-top: 1px solid var(--line); }
     tradTabs.querySelectorAll("button").forEach(function (b, j) { b.setAttribute("aria-selected", j === i ? "true" : "false"); b.tabIndex = j === i ? 0 : -1; });
     var box = $("tradTerms"); box.textContent = "";
     t.terms.forEach(function (p) { var d = document.createElement("div"); d.className = "term"; var b = document.createElement("b"); b.textContent = p[0]; var s = document.createElement("span"); s.textContent = p[1]; d.append(b, s); box.appendChild(d); });
-    $("tradEq").textContent = t.eq; $("tradWhere").textContent = t.where;
+    $("tradEq").textContent = t.eq; $("tradWhere").textContent = t.where; $("tradSrc").textContent = "Sources: " + t.src;
   }
   TRADS.forEach(function (t, i) {
     var b = document.createElement("button"); b.type = "button"; b.className = "chip"; b.setAttribute("role", "tab"); b.textContent = t.name;
