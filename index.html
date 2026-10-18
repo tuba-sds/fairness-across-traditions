@@ -648,18 +648,38 @@ footer { padding-block: 32px 64px; border-top: 1px solid var(--line); }
       <p class="sub">This pulls Parts 2 and 3 together. First test single words, then compare the two views as a whole.</p>
     </div>
     <h3 style="margin-bottom:6px">1 · Same word, same meaning?</h3>
-    <p class="sub" style="margin-bottom:12px">Tap a value to compare its two readings.</p>
+    <p class="sub" style="margin-bottom:12px">Tap a value to compare its two readings. Each card names its source.</p>
     <div class="same" id="same"></div>
     <h3 style="margin-bottom:12px">2 · The two views side by side</h3>
     <div class="vs" id="vsGrid">
       <div class="vs-row vs-head"><div class="w">West</div><div class="mid">Dimension</div><div class="a">Asia</div></div>
     </div>
+    <p class="note" style="margin-top:10px">Tendencies, not rules. Each side is internally diverse, and "Asian values" should not be treated as one block (Sen, 1997).</p>
+    <h3 style="margin-block:20px 6px">3 · Where they meet</h3>
     <div class="meet" aria-label="Where they meet">
-      <span>Golden Rule ↔ Confucian <i>shu</i></span>
-      <span>Rawls ↔ Gandhi's <i>sarvodaya</i></span>
-      <span>Corrective justice ↔ Daoist balance</span>
-      <span>Same words, different meanings</span>
+      <span>Golden Rule ↔ Confucian <i>shu</i>: don't impose what you'd refuse (Analects 15.24)</span>
+      <span>Rawls's difference principle ↔ Gandhi's talisman: judge by the poorest</span>
+      <span>Aristotle's justice as restoring a mean ↔ Daodejing 77: heaven evens out excess</span>
+      <span>Same words, different meanings: Chinese vs EU AI principles</span>
     </div>
+    <p class="note" style="margin-top:14px">Sources:
+      <a href="https://plato.stanford.edu/entries/ethics-chinese/">SEP: Chinese Ethics</a> ·
+      <a href="https://plato.stanford.edu/entries/justice/">SEP: Justice</a> ·
+      <a href="https://plato.stanford.edu/entries/privacy/">SEP: Privacy</a> ·
+      <a href="https://plato.stanford.edu/entries/feminism-autonomy/">SEP: Relational Autonomy</a> ·
+      <a href="https://plato.stanford.edu/entries/dignity/">SEP: Dignity</a> ·
+      <a href="https://plato.stanford.edu/entries/watsuji-tetsuro/">SEP: Watsuji</a> ·
+      <a href="https://plato.stanford.edu/entries/ethics-indian-buddhism/">SEP: Ethics in Indian and Tibetan Buddhism</a> ·
+      <a href="https://plato.stanford.edu/entries/moral-animal/">SEP: Moral Status of Animals</a> ·
+      <a href="https://library.oapen.org/handle/20.500.12657/30726">Ames &amp; Rosemont, Confucian Role Ethics</a> ·
+      <a href="https://csts.arts.chula.ac.th/cest/feeds/Krisana/7156321v361p0324.pdf">Kitiyadisai (2005), privacy in Thailand</a> ·
+      <a href="https://www.ojp.gov/ncjrs/virtual-library/abstracts/toward-balancing-approach-use-apology-japanese-society">Apology in Japanese justice</a> ·
+      <a href="https://carnegiecouncil.org/publications/archive/morgenthau/254">Sen (1997), Human Rights and Asian Values</a> ·
+      <a href="https://link.springer.com/article/10.1007/s13347-020-00413-8">Wong (2020)</a> ·
+      <a href="https://arxiv.org/pdf/2111.07555">Fung &amp; Etienne (2021), Chinese vs EU AI principles</a> ·
+      <a href="https://ctext.org/analects">Analects (ctext.org)</a> ·
+      <a href="https://mkgandhi-sarvodaya.org/gandhi's_talisman.htm">Gandhi's Talisman</a>
+    </p>
   </section>
 
   <!-- PART 4: game -->
@@ -1131,13 +1151,13 @@ footer { padding-block: 32px 64px; border-top: 1px solid var(--line); }
 
   /* ---------- side by side ---------- */
   var VS = [
-    ["The self", "Independent individual", "Defined by relationships"],
-    ["Fair means", "Equal treatment, fair procedure", "Fitting treatment, harmony"],
-    ["Duties come from", "Rights, contract, reason", "Roles, virtue, interdependence"],
-    ["Who counts", "Persons first, widened later", "All beings and nature, early"],
-    ["After a wrong", "Judge, compensate, punish", "Mediate, repair the relationship"],
-    ["AI rules", "Rights law (EU) or market-led (US)", "Soft law (JP, SG) or state-led (CN)"],
-    ["Blind spot", "Ignores community and nature", "Harmony can silence dissent"]
+    ["The self", "Tends to start from the independent individual", "Tends to see the person as made by relationships"],
+    ["Fair means", "Equal treatment and fair procedure", "Often fitting treatment that keeps relationships in balance"],
+    ["Duties come from", "Rights, contract, reason (and care)", "Roles, virtue, interdependence"],
+    ["Who counts", "Mostly humans first; animals and nature added later", "Buddhist and Jain care for all living beings, early"],
+    ["After a wrong", "Mainly judge, compensate, punish", "Often apology, mediation, repairing the relationship"],
+    ["AI rules", "Binding rights-based law (EU); mostly market-led (US)", "Mixed: binding (CN, KR, IN rules); light-touch (JP, SG)"],
+    ["Blind spot", "Can overlook community and nature", "Appeals to harmony can be used to silence dissent"]
   ];
   var vs = $("vsGrid");
   VS.forEach(function (r) {
@@ -1327,11 +1347,11 @@ footer { padding-block: 32px 64px; border-top: 1px solid var(--line); }
 
   /* ---------- assignment: same meaning? ---------- */
   var SAME = [
-    { v: "Fairness", w: "Equal rules and rights for each person", a: "Fitting treatment that keeps relationships balanced", d: "Partly" },
-    { v: "Harmony", w: "No conflict; can sound like conformity", a: "Different voices fitting together (和)", d: "Different" },
-    { v: "Privacy", w: "My right to control my data", a: "Protecting face and relationships; depends on the group", d: "Different" },
-    { v: "Autonomy", w: "I decide for myself", a: "Growing as a person within my roles", d: "Partly" },
-    { v: "Dignity", w: "Every person's built-in worth (Kant)", a: "Worth shown through conduct; all beings matter", d: "Partly" }
+    { v: "Fairness", w: "Equal rules and rights for each person", a: "Fitting treatment for each role and relationship", d: "Partly", src: "SEP: Chinese Ethics; SEP: Justice" },
+    { v: "Harmony", w: "Often heard as consensus or no conflict", a: "Different voices fitting together, not sameness (和而不同, Analects 13.23)", d: "Partly", src: "SEP: Chinese Ethics" },
+    { v: "Privacy", w: "My right to control information about me", a: "Often relational: shaped by family, face and group", d: "Partly", src: "SEP: Privacy; Kitiyadisai (2005)" },
+    { v: "Autonomy", w: "I decide for myself", a: "Self-direction grown within relationships and roles", d: "Partly", src: "SEP: Chinese Ethics; SEP: Relational Autonomy" },
+    { v: "Dignity", w: "Every rational person's built-in worth (Kant)", a: "Inborn worth realised through conduct (Mencius); Buddhism extends care to all beings", d: "Partly", src: "SEP: Dignity; SEP: Chinese Ethics" }
   ];
   var same = $("same");
   SAME.forEach(function (s) {
@@ -1344,7 +1364,8 @@ footer { padding-block: 32px 64px; border-top: 1px solid var(--line); }
       var a = document.createElement("div"); a.className = "rd"; a.innerHTML = "<i class='a'>Asia:</i> "; a.appendChild(document.createTextNode(s.a));
       var v = document.createElement("span"); v.className = "verdict"; v.textContent = s.d + " the same";
       if (s.d === "Different") v.textContent = "Different meanings";
-      b.append(w, a, v);
+      var sr = document.createElement("small"); sr.textContent = "Source: " + s.src; sr.style.color = "var(--muted)"; sr.style.fontSize = "12px";
+      b.append(w, a, v, sr);
     }
     b.onclick = function () { var o = b.getAttribute("aria-expanded") !== "true"; b.setAttribute("aria-expanded", String(o)); render(o); };
     render(false); same.appendChild(b);
