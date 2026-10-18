@@ -241,7 +241,13 @@ input[type=range] { width: 100%; accent-color: var(--akane); }
 table.score { border-collapse: collapse; width: 100%; min-width: 640px; font-size: 14px; font-variant-numeric: tabular-nums; }
 table.score th, table.score td { padding: 7px 6px; border-bottom: 1px solid var(--line); text-align: center; }
 table.score th:first-child, table.score td:first-child { text-align: left; }
-table.score thead th { font-size: 12px; color: var(--muted); font-weight: 700; }
+table.score thead th { font-size: 12px; color: var(--muted); font-weight: 700; line-height: 1.25; vertical-align: bottom; }
+table.score tr.grp th { font-size: 11px; letter-spacing: .06em; text-transform: uppercase; border-bottom: 2px solid var(--line); }
+table.score th.gb { color: var(--ink); background: var(--soft); }
+table.score th.gr { color: var(--ink); background: var(--c2); }
+table.score th.q { cursor: help; text-decoration: underline dotted; text-underline-offset: 3px; }
+table.score td[data-k] { cursor: help; }
+table.score td[data-k]:hover { background: var(--soft); }
 table.score td.tot { font-weight: 700; background: var(--soft); }
 table.score tr.sel td { background: var(--soft); }
 table.score tr.sel td.tot { background: var(--lilac); }
@@ -575,11 +581,7 @@ footer { padding-block: 32px 64px; border-top: 1px solid var(--line); }
     </div>
     <div class="block" id="gov-check" style="margin-top:28px">
       <h3>2 · The checklist behind the map</h3>
-      <p class="sub">Ten yes/no questions. Each country's position is just its points, so anyone can check or challenge it.</p>
-      <div class="checklist">
-        <div><b>How binding? (across)</b><ol id="ckB"></ol></div>
-        <div><b>Risk control first? (up)</b><ol id="ckR"></ol></div>
-      </div>
+      <p class="sub">Ten yes/no questions. A country's position on the map is just its points. Hover a column name for the question, or a mark for the evidence.</p>
       <div class="figure" style="padding:8px 12px"><table class="score" id="scoreTable" aria-label="Checklist scores by country"></table></div>
       <p class="note">● yes = 1 · ◐ partly (only some rules, only government use, only some states, or not yet in force) = ½ · ○ no = 0. Score = points × 20. Each item was checked in October 2026 against official texts and law-firm trackers; links are in each country card. Some ½ marks are judgement calls.</p>
     </div>
@@ -993,27 +995,35 @@ footer { padding-block: 32px 64px; border-top: 1px solid var(--line); }
   // label placement where dots share a row
   var LBL = { "China": "above", "South Korea": "below", "UK": "left", "EU": "above" };
   function mark(v) { return v === 1 ? "●" : v === 0.5 ? "◐" : "○"; }
-  CK_B.forEach(function (c) { var li = document.createElement("li"); li.textContent = c; $("ckB").appendChild(li); });
-  CK_R.forEach(function (c) { var li = document.createElement("li"); li.textContent = c; $("ckR").appendChild(li); });
+  var SHORT_B = ["AI law", "Duties", "Fines", "Enforcer", "Bans"], SHORT_R = ["Risk checks", "Safety body", "Labels", "Safety goal", "Incidents"];
 
   var sc = $("scatter"), M = { l: 46, r: 20, t: 20, b: 56 }, W = 600, H = 430, gf = "all", gsel = 0;
   function sx(v) { return M.l + (v + 8) / 116 * (W - M.l - M.r); }
   function sy(v) { return H - M.b - (v + 8) / 116 * (H - M.t - M.b); }
   function selectGov(i) { gsel = i; drawScatter(); }
   function drawTable() {
-    var t = $("scoreTable"), h = "<thead><tr><th>Country</th>";
-    CK_B.forEach(function (c, i) { h += "<th title='" + c + "'>B" + (i + 1) + "</th>"; });
-    h += "<th>Binding</th>";
-    CK_R.forEach(function (c, i) { h += "<th title='" + c + "'>R" + (i + 1) + "</th>"; });
-    h += "<th>Risk</th></tr></thead><tbody>";
+    var t = $("scoreTable");
+    var h = "<thead><tr class='grp'><th></th><th colspan='6' class='gb'>How binding? (across)</th><th colspan='6' class='gr'>Risk control first? (up)</th></tr><tr><th>Country</th>";
+    SHORT_B.forEach(function (c, i) { h += "<th class='q' data-k='" + i + "'>" + c + "</th>"; });
+    h += "<th>Score</th>";
+    SHORT_R.forEach(function (c, i) { h += "<th class='q' data-k='" + (i + 5) + "'>" + c + "</th>"; });
+    h += "<th>Score</th></tr></thead><tbody>";
     GOV.forEach(function (g, i) {
       h += "<tr" + (i === gsel ? " class='sel'" : "") + "><td><button type='button' data-i='" + i + "'>" + g.n + "</button></td>";
-      g.b.forEach(function (v) { h += "<td class='m" + (v ? 1 : 0) + "'>" + mark(v) + "</td>"; });
+      g.b.forEach(function (v, k) { h += "<td class='m" + (v ? 1 : 0) + "' data-g='" + i + "' data-k='" + k + "'>" + mark(v) + "</td>"; });
       h += "<td class='tot'>" + g.x + "</td>";
-      g.r.forEach(function (v) { h += "<td class='m" + (v ? 1 : 0) + "'>" + mark(v) + "</td>"; });
+      g.r.forEach(function (v, k) { h += "<td class='m" + (v ? 1 : 0) + "' data-g='" + i + "' data-k='" + (k + 5) + "'>" + mark(v) + "</td>"; });
       h += "<td class='tot'>" + g.y + "</td></tr>";
     });
     t.innerHTML = h + "</tbody>";
+    var ALL = CK_B.concat(CK_R);
+    t.querySelectorAll("th.q").forEach(function (th) { th.tabIndex = 0; bindTip(th, function () { return [ALL[+th.dataset.k] + "?", "Yes = 1 · partly = ½ · no = 0"]; }); });
+    t.querySelectorAll("td[data-k]").forEach(function (td) {
+      bindTip(td, function () {
+        var g = GOV[+td.dataset.g], k = +td.dataset.k, v = k < 5 ? g.b[k] : g.r[k - 5], note = k < 5 ? g.nb[k] : g.nr[k - 5];
+        return [g.n + " · " + ALL[k], (v === 1 ? "Yes" : v ? "Partly" : "No") + (note ? ": " + note : "")];
+      });
+    });
     t.querySelectorAll("button").forEach(function (b) { b.onclick = function () { gf = "all"; $("govFilter").querySelectorAll("button").forEach(function (x) { x.setAttribute("aria-pressed", x.dataset.f === "all" ? "true" : "false"); }); selectGov(+b.dataset.i); }; });
   }
   function drawScatter() {
