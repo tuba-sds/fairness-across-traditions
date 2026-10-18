@@ -264,7 +264,16 @@ table.score button { background: none; border: 0; padding: 0; font-weight: 700; 
 .warn .yr { font-family: var(--display); font-size: 1.3rem; font-weight: 700; color: var(--head); }
 .prec { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 12px; }
 @media (max-width: 700px) { .prec { grid-template-columns: minmax(0,1fr); } }
-.prec > div { background: var(--soft); border-radius: 14px; padding: 14px; display: grid; gap: 8px; align-content: start; }
+.flip { perspective: 900px; cursor: pointer; border-radius: 14px; }
+.flip-in { display: grid; height: 100%; min-height: 168px; transition: transform .5s ease; transform-style: preserve-3d; }
+.flip.on .flip-in { transform: rotateY(180deg); }
+@media (hover: hover) { .flip:hover .flip-in { transform: rotateY(180deg); } }
+.face { grid-area: 1 / 1; -webkit-backface-visibility: hidden; backface-visibility: hidden; border-radius: 14px; padding: 16px; display: grid; gap: 8px; align-content: start; }
+.face.front { background: var(--soft); }
+.face.front .hook { font-size: 14px; color: var(--muted); }
+.face.front .turn { align-self: end; justify-self: end; font-size: 12px; font-weight: 700; color: var(--muted); }
+.face.back { background: var(--surface); border: 1px solid var(--lilac); transform: rotateY(180deg); }
+@media (prefers-reduced-motion: reduce) { .flip-in { transition: none; } }
 .prec h4 { margin: 0; font-family: var(--display); font-size: 1.05rem; }
 .prec .yr { font-size: 12px; font-weight: 700; color: var(--muted); letter-spacing: .05em; text-transform: uppercase; }
 .prec dl { margin: 0; display: grid; grid-template-columns: 70px minmax(0,1fr); gap: 4px 8px; font-size: 13.5px; }
@@ -603,18 +612,13 @@ footer { padding-block: 32px 64px; border-top: 1px solid var(--line); }
         </div>
       </div>
 
-      <h3>Two warnings, one pattern</h3>
-      <div class="warn">
-        <div><span class="yr">Apr 2025</span><b>Budget cut</b><span>The CVE programme, which names almost every known bug, came within hours of losing its only funding, a US government contract with MITRE. It was extended at the last minute (<a href="https://therecord.media/cisa-extends-cve-program-contract-with-mitre">The Record</a>).</span></div>
-        <div><span class="yr">Jun 2026</span><b>Export control</b><span>A US directive cut every foreign national off from Mythos within hours. There was no exemption for allies (as reported by Prof. Maracke).</span></div>
-      </div>
       <p class="sub"><b>The point:</b> coordination is needed, but centralising it is the flaw. Splitting into rival regional systems would be just as weak.</p>
 
       <h3>What worked before: neutral ground</h3>
       <div class="prec">
-        <div><span class="yr">Since 1906</span><h4>Radio spectrum · ITU</h4><dl><dt>States keep</dt><dd>Licensing their own users</dd><dt>States give</dt><dd>The right to interfere across borders</dd><dt>Holder</dt><dd>A treaty and a shared register</dd></dl></div>
-        <div><span class="yr">Since 1957</span><h4>Nuclear · IAEA</h4><dl><dt>States get</dt><dd>Access to peaceful uses</dd><dt>States give</dt><dd>Accepting inspections</dd><dt>Holder</dt><dd>Vienna. The US started it but did not own it.</dd></dl></div>
-        <div><span class="yr">TRIPS</span><h4>Medicines · patents</h4><dl><dt>Firms keep</dt><dd>Their patent rights</dd><dt>Public gets</dt><dd>Fair, tiered access</dd><dt>Holder</dt><dd>Neutral pooled access</dd></dl></div>
+        <div class="flip" role="button" tabindex="0" aria-pressed="false" aria-label="Radio spectrum · ITU: flip card"><div class="flip-in"><div class="face front"><span class="yr">Since 1906</span><h4>Radio spectrum · ITU</h4><span class="hook">Airwaves are finite and cross borders.</span><span class="turn">Flip ↻</span></div><div class="face back"><h4>Radio spectrum · ITU</h4><dl><dt>States keep</dt><dd>Licensing their own users</dd><dt>States give</dt><dd>The right to interfere across borders</dd><dt>Holder</dt><dd>A treaty and a shared register</dd></dl></div></div></div>
+        <div class="flip" role="button" tabindex="0" aria-pressed="false" aria-label="Nuclear · IAEA: flip card"><div class="flip-in"><div class="face front"><span class="yr">Since 1957</span><h4>Nuclear · IAEA</h4><span class="hook">The same power can light a city or destroy one.</span><span class="turn">Flip ↻</span></div><div class="face back"><h4>Nuclear · IAEA</h4><dl><dt>States get</dt><dd>Access to peaceful uses</dd><dt>States give</dt><dd>Accepting inspections</dd><dt>Holder</dt><dd>Vienna. The US started it but did not own it.</dd></dl></div></div></div>
+        <div class="flip" role="button" tabindex="0" aria-pressed="false" aria-label="Medicines · patents: flip card"><div class="flip-in"><div class="face front"><span class="yr">TRIPS</span><h4>Medicines · patents</h4><span class="hook">Life-saving drugs locked behind patents.</span><span class="turn">Flip ↻</span></div><div class="face back"><h4>Medicines · patents</h4><dl><dt>Firms keep</dt><dd>Their patent rights</dd><dt>Public gets</dt><dd>Fair, tiered access</dd><dt>Holder</dt><dd>Neutral pooled access</dd></dl></div></div></div>
       </div>
 
       <h3>Three asks</h3>
@@ -1077,6 +1081,13 @@ footer { padding-block: 32px 64px; border-top: 1px solid var(--line); }
     };
   });
   drawScatter();
+
+  /* ---------- flip cards ---------- */
+  document.querySelectorAll(".flip").forEach(function (f) {
+    function flip() { var on = !f.classList.contains("on"); f.classList.toggle("on", on); f.setAttribute("aria-pressed", String(on)); }
+    f.addEventListener("click", flip);
+    f.addEventListener("keydown", function (e) { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); flip(); } });
+  });
 
   /* ---------- reading: who holds the keys ---------- */
   var KN = ["US", "EU", "Japan", "Korea", "India", "Africa", "Brazil"];
