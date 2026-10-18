@@ -440,25 +440,16 @@ footer { padding-block: 32px 64px; border-top: 1px solid var(--line); }
     <div class="part-head">
       <div class="kicker">Part 1 of 4 · The course</div>
       <h2>Can fairness be built into technology?</h2>
-      <p class="sub">The course frame in three steps: the two lenses we use, why fairness is hard, and how a system turns data into decisions.</p>
+      <p class="sub">The course frame in two steps: how a system turns data into decisions, then why fairness is hard to build in.</p>
     </div>
 
     <div class="blocks">
-      <!-- Two lenses -->
-      <div class="block" id="course-lenses">
-        <h3>1 · Two lenses, side by side</h3>
-        <div class="duo">
-          <div class="figure"><svg id="venn" viewBox="0 0 560 300" role="img" aria-label="Venn diagram: technically possible and socially desired overlap where fairness can be built in"></svg></div>
-          <div class="block">
-            <div class="tabs" id="vennTabs" aria-label="Venn regions">
-              <button class="chip" type="button" data-r="0" aria-pressed="false">Only possible</button>
-              <button class="chip" type="button" data-r="1" aria-pressed="true">Both</button>
-              <button class="chip" type="button" data-r="2" aria-pressed="false">Only desired</button>
-            </div>
-            <div class="caption" id="vennCap" aria-live="polite"></div>
-            <p class="note">Hover the diagram or pick a region. The course uses real cases, not theory alone.</p>
-          </div>
-        </div>
+      <!-- Technical -->
+      <div class="block" id="course-system">
+        <h3>1 · How a system decides</h3>
+        <p class="sub">Fairness can break at any step. Click a step to see the question it raises.</p>
+        <div class="pipe" id="pipe"></div>
+        <div class="caption" id="pipeCap" aria-live="polite"></div>
       </div>
 
       <!-- Why fairness -->
@@ -475,14 +466,6 @@ footer { padding-block: 32px 64px; border-top: 1px solid var(--line); }
         </div>
         <button class="btn" type="button" id="openWhy" style="justify-self:start">Who wins, who loses, and why can't one system be fair to everyone? →</button>
 
-      </div>
-
-      <!-- Technical -->
-      <div class="block" id="course-system">
-        <h3>3 · How a system decides</h3>
-        <p class="sub">Fairness can break at any step. Click a step to see the question it raises.</p>
-        <div class="pipe" id="pipe"></div>
-        <div class="caption" id="pipeCap" aria-live="polite"></div>
       </div>
 
     </div>
@@ -1350,33 +1333,6 @@ footer { padding-block: 32px 64px; border-top: 1px solid var(--line); }
 
   /* ---------- course: helpers ---------- */
   function pressOnly(container, btn) { container.querySelectorAll("button").forEach(function (b) { b.setAttribute("aria-pressed", b === btn ? "true" : "false"); }); }
-
-  /* ---------- course: Venn ---------- */
-  var VENN = [
-    { t: "Possible, not wanted", ex: "Face recognition on every street camera. It works, but few people want it." },
-    { t: "Possible and wanted", ex: "A hiring tool that is audited for bias and lets rejected applicants appeal. This is where fairness can be built in." },
-    { t: "Wanted, not possible", ex: "A model that is fair by every definition at once. Maths rules it out." }
-  ];
-  var venn = $("venn"), vR = 0;
-  (function drawVenn() {
-    el("circle", { cx: 210, cy: 150, r: 120, fill: "var(--c1)", "fill-opacity": .75 }, venn);
-    el("circle", { cx: 350, cy: 150, r: 120, fill: "var(--c2)", "fill-opacity": .75 }, venn);
-    el("circle", { cx: 280, cy: 150, r: 12, fill: "var(--kesari)" }, venn);
-    txt("text", { x: 150, y: 140, "text-anchor": "middle", "font-size": 16, "font-weight": 700, class: "svg-text" }, "Technically", venn);
-    txt("text", { x: 150, y: 160, "text-anchor": "middle", "font-size": 16, "font-weight": 700, class: "svg-text" }, "possible", venn);
-    txt("text", { x: 410, y: 140, "text-anchor": "middle", "font-size": 16, "font-weight": 700, class: "svg-text" }, "Socially", venn);
-    txt("text", { x: 410, y: 160, "text-anchor": "middle", "font-size": 16, "font-weight": 700, class: "svg-text" }, "desired", venn);
-    txt("text", { x: 280, y: 186, "text-anchor": "middle", "font-size": 12.5, "font-weight": 700, class: "svg-text" }, "Fair tech", venn);
-  })();
-  function setVenn(r) { vR = r; var v = VENN[r]; var c = $("vennCap"); c.textContent = ""; var b = document.createElement("b"); b.textContent = v.t + ". "; c.append(b, document.createTextNode(v.ex)); pressOnly($("vennTabs"), $("vennTabs").children[r]); }
-  $("vennTabs").querySelectorAll("button").forEach(function (b) { b.onclick = function () { setVenn(+b.dataset.r); }; });
-  venn.addEventListener("pointermove", function (e) {
-    var p = venn.createSVGPoint(); p.x = e.clientX; p.y = e.clientY; var q = p.matrixTransform(venn.getScreenCTM().inverse());
-    var inL = Math.hypot(q.x - 210, q.y - 150) < 120, inR = Math.hypot(q.x - 350, q.y - 150) < 120;
-    var r = inL && inR ? 1 : inL ? 0 : inR ? 2 : -1;
-    if (r >= 0 && r !== vR) setVenn(r);
-  });
-  setVenn(1);
 
   /* ---------- course: design choices ---------- */
   var DESIGN = [
