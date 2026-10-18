@@ -581,7 +581,7 @@ footer { padding-block: 32px 64px; border-top: 1px solid var(--line); }
         <div><b>Risk control first? (up)</b><ol id="ckR"></ol></div>
       </div>
       <div class="figure" style="padding:8px 12px"><table class="score" id="scoreTable" aria-label="Checklist scores by country"></table></div>
-      <p class="note">● yes = 1 · ◐ partly, or only in some states = ½ · ○ no = 0. Score = points × 20. My reading of the status as of October 2026. Verify each item before submitting.</p>
+      <p class="note">● yes = 1 · ◐ partly (only some rules, only government use, only some states, or not yet in force) = ½ · ○ no = 0. Score = points × 20. Each item was checked in October 2026 against official texts and law-firm trackers; links are in each country card. Some ½ marks are judgement calls.</p>
     </div>
 
     <!-- Reading: Maracke -->
@@ -603,8 +603,8 @@ footer { padding-block: 32px 64px; border-top: 1px solid var(--line); }
 
       <h3>Two warnings, one pattern</h3>
       <div class="warn">
-        <div><span class="yr">2025</span><b>Budget cut</b><span>The CVE programme, which names almost every known bug, nearly went dark when its single US funding source almost lapsed.</span></div>
-        <div><span class="yr">Jun 2026</span><b>Export control</b><span>A US directive cut every foreign national off from Mythos within hours. There was no exemption for allies.</span></div>
+        <div><span class="yr">Apr 2025</span><b>Budget cut</b><span>The CVE programme, which names almost every known bug, came within hours of losing its only funding, a US government contract with MITRE. It was extended at the last minute (<a href="https://therecord.media/cisa-extends-cve-program-contract-with-mitre">The Record</a>).</span></div>
+        <div><span class="yr">Jun 2026</span><b>Export control</b><span>A US directive cut every foreign national off from Mythos within hours. There was no exemption for allies (as reported by Prof. Maracke).</span></div>
       </div>
       <p class="sub"><b>The point:</b> coordination is needed, but centralising it is the flaw. Splitting into rival regional systems would be just as weak.</p>
 
@@ -739,7 +739,7 @@ footer { padding-block: 32px 64px; border-top: 1px solid var(--line); }
         <div class="fact"><b>$100M</b><span>Usage credits, plus $4M to open source</span></div>
         <div class="fact"><b>27 yrs</b><span>Age of one OpenBSD bug it found</span></div>
         <div class="fact"><b>Defensive only</b><span>Vetted partners, not public API</span></div>
-        <div class="fact"><b>Jun 2026</b><span>US export control cut all foreign access to Mythos</span></div>
+        <div class="fact"><b>Jun 2026</b><span>US export control cut all foreign access to Mythos (per Prof. Maracke)</span></div>
       </div>
     </div>
     <div>
@@ -948,39 +948,50 @@ footer { padding-block: 32px 64px; border-top: 1px solid var(--line); }
   /* ---------- governance: checklist scores ---------- */
   var CK_B = ["AI-specific law in force", "Binding duties on companies", "Fines or penalties", "An authority that enforces AI rules", "Some AI uses banned"];
   var CK_R = ["Risk checks required before use", "Government AI safety institute", "AI content must be labelled", "Main stated goal is safety or rights", "Serious incidents must be reported"];
+  // Verified Oct 2026 against official sources and law-firm trackers (links shown in each country card)
   var GOV = [
-    { n: "EU", s: "west", b: [1, 1, 1, 1, 1], r: [1, 1, 1, 1, 1], law: "AI Act (2024), phased in 2025–27", val: "Fundamental rights",
-      nb: ["AI Act (2024)", "Duties on providers and deployers", "Fines up to 7% of global turnover", "EU AI Office plus national authorities", "Bans e.g. social scoring"],
-      nr: ["Conformity checks for high-risk AI", "AI Office is in the international safety-institute network", "Deepfakes and AI content must be disclosed", "Fundamental rights and safety", "Serious incidents must be reported"] },
-    { n: "China", s: "asia", b: [0.5, 1, 1, 1, 0.5], r: [1, 0.5, 1, 0.5, 0], law: "Rules on algorithms (2022), deepfakes (2023), generative AI (2023), labelling (2025)", val: "Social stability, state-led development",
-      nb: ["Binding AI regulations, but no single AI statute", "Providers must file algorithms and follow rules", "Penalties under the rules and Cybersecurity Law", "Cyberspace Administration of China", "Some generated content is banned"],
-      nr: ["Security assessment before public launch", "AI safety association (2025), not a state institute", "AI content labelling rules (Sept 2025)", "Balances security with development", "No AI-specific incident duty"] },
-    { n: "South Korea", s: "asia", b: [1, 1, 0.5, 1, 0], r: [1, 1, 1, 0.5, 0], law: "AI Basic Act, in force Jan 2026", val: "Trust and human dignity",
-      nb: ["AI Basic Act, in force Jan 2026", "Duties for high-impact and generative AI", "Modest fines, with a grace period", "Ministry of Science and ICT", "No banned uses"],
-      nr: ["Risk management for high-impact AI", "Korea AI Safety Institute (2024)", "Generative AI output must be labelled", "Promotes AI and builds trust", "No general incident duty"] },
-    { n: "USA", s: "west", b: [0.5, 0.5, 0.5, 0, 0], r: [0.5, 1, 0.5, 0, 0.5], law: "AI Action Plan (2025); state laws such as California SB 53", val: "Innovation and leadership",
-      nb: ["No federal AI law; state laws only (half credit)", "State duties, e.g. California SB 53", "State civil penalties", "No federal AI regulator", "No federal bans"],
-      nr: ["Frontier safety frameworks under SB 53 (state)", "Center for AI Standards and Innovation", "California disclosure law (state)", "Federal goal is AI leadership", "SB 53 safety-incident reports (state)"] },
-    { n: "Canada", s: "west", b: [0, 0, 0, 0, 0], r: [0.5, 1, 0, 0.5, 0], law: "Voluntary code; AIDA bill died in 2025", val: "Responsible AI",
-      nb: ["AIDA bill died in 2025", "Voluntary code only", "", "", ""],
-      nr: ["Impact assessments for federal government AI only", "Canadian AI Safety Institute", "", "Responsible-AI aims, voluntary", ""] },
-    { n: "UK", s: "west", b: [0, 0, 0, 0, 0], r: [0, 1, 0, 0.5, 0], law: "Principles applied by existing regulators", val: "Innovation with safety science",
-      nb: ["No AI law", "Existing regulators apply principles", "", "", ""],
-      nr: ["", "AI Security Institute", "", "Pro-innovation, with strong safety research", ""] },
-    { n: "Singapore", s: "asia", b: [0, 0, 0, 0, 0], r: [0, 1, 0, 0.5, 0], law: "Model AI Governance Framework; AI Verify toolkit", val: "Trust, practicality",
-      nb: ["No AI law; voluntary frameworks", "", "", "", ""],
-      nr: ["AI Verify testing is voluntary", "Singapore AI Safety Institute", "", "Trust and practicality, balanced", ""] },
-    { n: "Japan", s: "asia", b: [1, 0, 0, 0.5, 0], r: [0, 1, 0, 0, 0], law: "AI Promotion Act (2025); Hiroshima AI Process (2023)", val: "Human-centric, Society 5.0",
-      nb: ["AI Promotion Act (2025)", "Companies are only asked to cooperate", "No penalties", "Government can investigate and name, not fine", ""],
-      nr: ["", "Japan AI Safety Institute (2024)", "", "Main goal is to promote AI", ""] },
-    { n: "India", s: "asia", b: [0, 0, 0, 0, 0], r: [0, 1, 0, 0, 0], law: "AI Governance Guidelines (2025); IndiaAI Mission", val: "\"AI for All\", inclusion",
-      nb: ["Guidelines (2025), no AI law", "", "", "", ""],
-      nr: ["", "IndiaAI Safety Institute (2025)", "Labelling rules proposed, not counted", "Guidelines favour innovation", ""] }
+    { n: "EU", s: "west", b: [1, 1, 1, 1, 1], r: [0.5, 1, 1, 1, 0.5], law: "AI Act (2024); Digital Omnibus (Jul 2026) delays high-risk duties to Dec 2027 / Aug 2028", val: "Human-centric, trustworthy AI; health, safety and fundamental rights (Art. 1)",
+      nb: ["AI Act in force since Aug 2024", "General-purpose AI duties (Aug 2025), transparency duties (Aug 2026)", "Fines up to €35M or 7% of turnover (Art. 99)", "European AI Office plus national authorities", "Art. 5 bans, e.g. social scoring, since Feb 2025"],
+      nr: ["Only frontier-model evaluations apply now; high-risk checks delayed", "European AI Office", "Deepfake and AI-interaction disclosure (Art. 50) since Aug 2026", "Purpose is rights and safety (Art. 1)", "Only for frontier models now; high-risk reporting delayed"],
+      src: [["Orrick: Digital Omnibus", "https://www.orrick.com/en/Insights/2026/07/EU-AI-Act-Update-Digital-Omnibus-Finalizes-8-Compliance-Changes"], ["AI Act Art. 1", "https://artificialintelligenceact.eu/article/1/"], ["AI Act Art. 99", "https://artificialintelligenceact.eu/article/99/"]] },
+    { n: "China", s: "asia", b: [0.5, 1, 1, 1, 1], r: [1, 0.5, 1, 0.5, 0.5], law: "Algorithm (2022), deep synthesis (2023), generative AI (2023) and labelling (2025) rules; AI article in Cybersecurity Law (2026)", val: "\"Equal emphasis on development and security\" (Generative AI Measures, Art. 3)",
+      nb: ["Binding regulations, but no single AI statute", "Algorithm filing, content rules, labelling", "Cybersecurity Law fines up to RMB 10M", "Cyberspace Administration of China (CAC) with other ministries", "Bans e.g. deepfake fake news, addictive feeds to minors"],
+      nr: ["Security assessment and filing before launch", "CnAISDA (2025): a coalition, not a state agency", "Visible and metadata labels since Sep 2025", "Security and stability, balanced with development", "General cyber-incident reporting (Nov 2025), not AI-specific"],
+      src: [["China Briefing: Cybersecurity Law", "https://www.china-briefing.com/news/china-cybersecurity-law-amendment/"], ["Loeb: labelling rules", "https://www.loeb.com/en/insights/publications/2025/03/chinas-ai-labeling-measures-and-mandatory-national-standards-take-effect-september-1"], ["Carnegie: CnAISDA", "https://carnegieendowment.org/research/2025/06/how-some-of-chinas-top-ai-thinkers-built-their-own-ai-safety-institute"]] },
+    { n: "South Korea", s: "asia", b: [1, 1, 0.5, 1, 0], r: [0.5, 1, 1, 0.5, 0.5], law: "AI Basic Act, in force 22 Jan 2026", val: "Trust and people's rights, balanced with industry and competitiveness",
+      nb: ["AI Basic Act, in force Jan 2026", "Duties for high-impact and generative AI", "Max KRW 30M; fines deferred to at least Jan 2027", "Ministry of Science and ICT (MSIT)", "No banned uses"],
+      nr: ["Must check if AI is high-impact; impact assessment is best-effort", "Korea AI Safety Institute (Nov 2024)", "Generative AI output must be labelled", "Rights and dignity alongside competitiveness", "Only for very large models, reported to MSIT"],
+      src: [["Cooley: AI Basic Act", "https://www.cooley.com/news/insight/2026/2026-01-27-south-koreas-ai-basic-act-overview-and-key-takeaways"], ["US ITA: AI Basic Act", "https://www.trade.gov/market-intelligence/south-korea-ai-basic-act"], ["Stimson", "https://www.stimson.org/2026/south-koreas-ai-basic-act-seeking-balance-between-industry-innovation-and-social-risk/"]] },
+    { n: "USA", s: "west", b: [0.5, 0.5, 0.5, 0.5, 0.5], r: [0.5, 1, 0.5, 0, 0.5], law: "No federal AI law; TAKE IT DOWN Act (2025); California SB 53 and SB 942", val: "Innovation and \"winning the AI race\" (AI Action Plan, 2025)",
+      nb: ["State laws only (California SB 53, SB 942)", "SB 53 safety frameworks; SB 942 disclosures", "SB 53 up to $1M per violation", "State attorneys general; FTC for TAKE IT DOWN only", "Federal crime to publish non-consensual AI intimate images"],
+      nr: ["SB 53 frontier safety frameworks (state)", "Center for AI Standards and Innovation (NIST)", "California SB 942 since Aug 2026 (state)", "Federal goal is AI leadership", "SB 53 critical-incident reports to California (state)"],
+      src: [["FTC: TAKE IT DOWN", "https://www.ftc.gov/news-events/news/press-releases/2026/05/ftc-begins-enforcing-take-it-down-act"], ["SB 53 incident reporting", "https://casrai.org/guides/sb-53-critical-safety-incident-reporting"], ["White House AI Action Plan", "https://www.whitehouse.gov/articles/2025/07/white-house-unveils-americas-ai-action-plan/"]] },
+    { n: "India", s: "asia", b: [0.5, 1, 0.5, 0.5, 0], r: [0, 1, 1, 0, 0], law: "IT Rules amendment on synthetic content (in force Feb 2026); AI Governance Guidelines (Nov 2025)", val: "\"Safe and trusted AI innovation\"; innovation over restraint",
+      nb: ["AI rules under the IT Act, no AI Act", "Platforms must label synthetic content", "Loss of legal safe harbour, no AI fine schedule", "MeitY enforces the IT Rules", "No banned uses"],
+      nr: ["Voluntary only", "IndiaAI Safety Institute (2025)", "Synthetic audio, images and video must be labelled", "Guidelines favour innovation", "No AI incident duty"],
+      src: [["Hogan Lovells: IT Rules 2026", "https://www.hoganlovells.com/en/publications/india-introduces-mandatory-labelling-for-ai-and-3hour-takedown-for-illegal-content"], ["IndiaAI Safety Institute", "https://indiaai.gov.in/article/india-takes-the-lead-establishing-the-indiaai-safety-institute-for-responsible-ai-innovation"], ["Mondaq: Guidelines", "https://www.mondaq.com/india/new-technology/1710654/india-artificial-intelligence-governance-guidelines"]] },
+    { n: "Singapore", s: "asia", b: [0.5, 0.5, 0.5, 0.5, 0.5], r: [0, 1, 0, 0, 0], law: "Voluntary frameworks and AI Verify; election deepfake ban (2024); Online Safety Act (2025)", val: "Trusted AI \"for the Public Good\", supporting innovation",
+      nb: ["Narrow laws only (election deepfakes, online safety)", "Content orders on platforms, not AI-specific", "Offence to publish candidate deepfakes", "Online Safety Commission (Jun 2026)", "Candidate deepfakes banned during elections"],
+      nr: ["AI Verify testing is voluntary", "Digital Trust Centre as AI Safety Institute", "No labelling law", "Pro-innovation, voluntary", "No AI incident duty"],
+      src: [["HSF Kramer AI tracker", "https://www.hsfkramer.com/insights/reports/ai-tracker/singapore"], ["MDDI: election deepfakes", "https://www.mddi.gov.sg/newsroom/new-legal-measures-uphold-integrity-online-advertising-elections/"], ["Online Safety Commission", "https://www.mlaw.gov.sg/the-online-safety-commission-begins-operations-on-29-june-2026/"]] },
+    { n: "Canada", s: "west", b: [0.5, 0, 0, 0, 0], r: [0.5, 1, 0, 0, 0], law: "AIDA died Jan 2025; Directive on Automated Decision-Making (government only); Bills C-34, C-36 pending", val: "\"AI for All\" (2026): growth and adoption first",
+      nb: ["Only a directive for federal government AI", "No binding federal duties on companies", "", "", ""],
+      nr: ["Impact assessments for federal government AI only", "Canadian AI Safety Institute (2024)", "", "Strategy leads with growth", ""],
+      src: [["Canada: ADM Directive", "https://www.canada.ca/en/government/system/digital-government/policies-standards/policy-service-digital-announcements/amendments-directive-automated-decision-making.html"], ["Canadian AI Safety Institute", "https://ised-isde.canada.ca/site/ised/canadian-artificial-intelligence-safety-institute"], ["Torys: Bill C-34", "https://www.torys.com/our-latest-thinking/publications/2026/06/bill-c-34"]] },
+    { n: "Japan", s: "asia", b: [1, 0, 0, 0, 0], r: [0, 1, 0, 0, 0], law: "AI Promotion Act (2025); AI Basic Plan (Dec 2025); voluntary guidelines", val: "Make Japan \"the most AI-friendly country\"",
+      nb: ["AI Promotion Act (2025)", "Companies only asked to cooperate (Art. 7)", "No penalties", "Government can investigate and advise, not order or fine", ""],
+      nr: ["", "Japan AI Safety Institute (Feb 2024)", "", "Purpose: promote AI and the economy (Art. 1)", ""],
+      src: [["AI Promotion Act (official translation)", "https://www.japaneselawtranslation.go.jp/en/laws/view/5066/en"], ["White & Case", "https://www.whitecase.com/insight-alert/japans-first-ai-legislation-becomes-law-focus-promoting-research-and-development-no"], ["J-AISI", "https://aisi.go.jp/assets/pdf/20250808_AISI_en.pdf"]] },
+    { n: "UK", s: "west", b: [0, 0, 0, 0, 0.5], r: [0, 1, 0, 0, 0], law: "No AI law; existing regulators; AI CSAM-tool offences passed (2026), not yet in force", val: "Growth and innovation (AI Opportunities Action Plan, 2025)",
+      nb: ["No AI-specific act", "Only general law (UK GDPR, Online Safety Act)", "", "No AI regulator", "AI CSAM-generator offences passed, not yet in force"],
+      nr: ["Model testing is voluntary", "AI Security Institute (renamed 2025)", "", "Growth framing", ""],
+      src: [["IAPP: King's Speech 2026", "https://iapp.org/news/a/king-s-speech-signals-diffuse-uk-digital-policy-agenda-but-no-ai-bill"], ["Crime and Policing Act 2026 s.72", "https://www.legislation.gov.uk/ukpga/2026/20/section/72"], ["AI Opportunities Action Plan", "https://www.gov.uk/government/publications/ai-opportunities-action-plan"]] }
   ];
   function sum(a) { return a.reduce(function (x, y) { return x + y; }, 0); }
   GOV.forEach(function (g) { g.x = sum(g.b) * 20; g.y = sum(g.r) * 20; });
   // two countries share a point (UK, Singapore): nudge a few pixels so both stay visible
-  var NUDGE = { "UK": -8, "Singapore": 8 };
+  // label placement where dots share a row
+  var LBL = { "China": "above", "South Korea": "below", "UK": "left", "EU": "above" };
   function mark(v) { return v === 1 ? "●" : v === 0.5 ? "◐" : "○"; }
   CK_B.forEach(function (c) { var li = document.createElement("li"); li.textContent = c; $("ckB").appendChild(li); });
   CK_R.forEach(function (c) { var li = document.createElement("li"); li.textContent = c; $("ckR").appendChild(li); });
@@ -1018,13 +1029,13 @@ footer { padding-block: 32px 64px; border-top: 1px solid var(--line); }
     txt("text", { x: sx(50), y: H - 6, "text-anchor": "middle", "font-size": 13, "font-weight": 700, class: "svg-text" }, "Binding score (voluntary → binding law)", sc);
     txt("text", { x: 12, y: sy(50), "text-anchor": "middle", "font-size": 13, "font-weight": 700, class: "svg-text", transform: "rotate(-90 12 " + sy(50) + ")" }, "Risk-control score", sc);
     GOV.forEach(function (g, i) {
-      var on = gf === "all" || gf === g.s, cx = sx(g.x), cy = sy(g.y) + (NUDGE[g.n] || 0);
+      var on = gf === "all" || gf === g.s, cx = sx(g.x), cy = sy(g.y);
       var grp = el("g", { class: "dot" + (i === gsel ? " sel" : ""), tabindex: on ? 0 : -1, role: "button", "aria-label": g.n + ", binding " + g.x + ", risk control " + g.y }, sc);
       grp.style.opacity = on ? 1 : 0.18;
       el("circle", { cx: cx, cy: cy, r: 8, fill: g.s === "asia" ? "var(--asia)" : "var(--west)", stroke: "var(--surface)", "stroke-width": 2 }, grp);
       el("circle", { cx: cx, cy: cy, r: 16, fill: "transparent" }, grp);
-      var right = g.x < 80;
-      txt("text", { x: cx + (right ? 13 : -13), y: cy + 4, "text-anchor": right ? "start" : "end", "font-size": 13, "font-weight": 600, class: "svg-text" }, g.n + " (" + g.x + ", " + g.y + ")", grp);
+      var pos = LBL[g.n] || "right", lx = pos === "right" ? cx + 13 : pos === "left" ? cx - 13 : cx, ly = pos === "above" ? cy - 14 : pos === "below" ? cy + 24 : cy + 4;
+      txt("text", { x: lx, y: ly, "text-anchor": pos === "right" ? "start" : pos === "left" ? "end" : "middle", "font-size": 13, "font-weight": 600, class: "svg-text" }, g.n + " (" + g.x + ", " + g.y + ")", grp);
       if (on) {
         grp.addEventListener("click", function () { selectGov(i); });
         grp.addEventListener("keydown", function (e) { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); selectGov(i); sc.querySelectorAll(".dot")[i].focus(); } });
@@ -1043,7 +1054,9 @@ footer { padding-block: 32px 64px; border-top: 1px solid var(--line); }
       var tx = document.createElement("span"); tx.textContent = (k < 5 ? "B" + (k + 1) : "R" + (k - 4)) + " · " + (note || c);
       li.append(m, tx); ul.appendChild(li);
     });
-    card.append(pill, h, sc2, law, ul);
+    var srcs = document.createElement("p"); srcs.className = "note"; srcs.textContent = "Sources: ";
+    g.src.forEach(function (x, k) { var a = document.createElement("a"); a.href = x[1]; a.target = "_blank"; a.rel = "noopener"; a.textContent = x[0]; if (k) srcs.appendChild(document.createTextNode(" · ")); srcs.appendChild(a); });
+    card.append(pill, h, sc2, law, ul, srcs);
     drawTable();
   }
   $("govFilter").querySelectorAll("button").forEach(function (b) {
