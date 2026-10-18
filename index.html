@@ -684,7 +684,13 @@ footer { padding-block: 32px 64px; border-top: 1px solid var(--line); }
     </div>
     <div class="game">
       <div class="card">
-        <label class="kicker" for="defIn">Your definition</label>
+        <div class="kicker">Class examples</div>
+        <div class="tabs" id="exTabs" aria-label="Class examples">
+          <button class="chip" type="button" data-ex="tuba" aria-pressed="true">Tuba</button>
+          <button class="chip" type="button" data-ex="madoka" aria-pressed="false">Madoka</button>
+          <button class="chip" type="button" data-ex="kinley" aria-pressed="false">Kinley</button>
+        </div>
+        <label class="kicker" for="defIn" style="margin-top:6px">Your definition</label>
         <textarea id="defIn" maxlength="800">Fairness is taking no advantage at the expense of any affected being — or of the living systems all beings depend on — that they cannot or could not have taken in return; making no distinction between beings that you would reject for yourself; and where such advantage has already been taken, restoring what could not be defended.</textarea>
         <div class="row">
           <button class="btn" id="scoreBtn" type="button">Score my definition</button>
@@ -710,7 +716,7 @@ footer { padding-block: 32px 64px; border-top: 1px solid var(--line); }
     <details class="card rubric" style="margin-top:16px">
       <summary><b>How the score works</b> · 8 criteria, each with a sourced East and West reading</summary>
       <div class="tablewrap"><table class="data" id="rubricTable"></table></div>
-      <p class="note">East score = criteria matching the East reading ÷ criteria your definition addresses. West score works the same way. The two shared ideas count for both. A mark only counts if its quote really appears in your text. Labels: a gap of 20 points or more means "Leans East" or "Leans West"; both 60 or above within 20 points means "Bridge". Traditions and regions come from Part 2.</p>
+      <p class="note">East score = criteria matching the East reading ÷ criteria your definition addresses. West score works the same way. The two shared ideas count for both. A mark only counts if its quote really appears in your text. Claude reads each definition three times and each criterion keeps the majority answer, so one odd reading cannot swing the score. Labels: a gap of 20 points or more means "Leans East" or "Leans West"; both 60 or above within 20 points means "Bridge". Traditions and regions come from Part 2.</p>
     </details>
 
     <div class="card board" id="boardCard" style="margin-top:16px" hidden>
@@ -1173,14 +1179,14 @@ footer { padding-block: 32px 64px; border-top: 1px solid var(--line); }
   // Each criterion has a West and an East reading taken from the sourced comparison in Part 4.
   // Claude only classifies and quotes; the page computes the scores, so the maths is transparent.
   var RUBRIC = [
-    { id: "c1", n: "Starting point", w: "The individual and their rights", e: "Relationships between beings", src: "SEP: Watsuji; Ames & Rosemont" },
-    { id: "c2", n: "What \"fair\" means", w: "Equal treatment, same rules", e: "Fitting treatment that keeps relations in balance", src: "SEP: Justice; SEP: Chinese Ethics" },
-    { id: "c3", n: "Where duties come from", w: "Rights, contract, reason", e: "Roles, virtue, interdependence", src: "Ames & Rosemont; SEP: Chinese Ethics" },
-    { id: "c4", n: "Who counts", w: "Humans first", e: "All living beings and nature (Buddhist, Jain)", src: "SEP: Moral Status of Animals; SEP: Buddhist Ethics" },
-    { id: "c5", n: "After a wrong", w: "Judge, compensate, punish", e: "Apology, mediation, repair", src: "Haley on apology in Japanese justice" },
-    { id: "c6", n: "How fairness is tested", w: "One universal rule, applied impartially (Kant, Rawls)", e: "Judgement fitted to role and context (Confucian yi)", src: "SEP: Kant's Moral Philosophy; SEP: Chinese Ethics" },
-    { id: "c7", n: "Shared: reciprocity", w: "Golden Rule", e: "Confucian shu (Analects 15.24)", src: "Analects 15.24", shared: true },
-    { id: "c8", n: "Shared: weakest first", w: "Rawls's difference principle", e: "Gandhi's talisman (1948)", src: "SEP: Rawls; Gandhi's Talisman", shared: true }
+    { id: "c1", n: "Starting point", w: "The individual and their rights", e: "Relationships between beings", src: "SEP: Watsuji; Ames & Rosemont", cue: "cue: \"west\" if fairness is framed around each individual, their rights or autonomy; \"east\" if framed around relations between parties (one party gaining at another's expense, ties, community); \"both\" if both" },
+    { id: "c2", n: "What \"fair\" means", w: "Equal treatment, same rules", e: "Fitting treatment that keeps relations in balance", src: "SEP: Justice; SEP: Chinese Ethics", cue: "cue: equal treatment, same rules, no distinction or discrimination = west; balance, harmony, fitting or proportionate treatment = east; equity / giving more to those who need it appears in both traditions (Aristotle, Confucian fitting treatment) = both" },
+    { id: "c3", n: "Where duties come from", w: "Rights, contract, reason", e: "Roles, virtue, interdependence", src: "Ames & Rosemont; SEP: Chinese Ethics", cue: "cue: rights, consent, contract, reason = west; roles, virtue, relational duties, interdependence = east" },
+    { id: "c4", n: "Who counts", w: "Humans first", e: "All living beings and nature (Buddhist, Jain)", src: "SEP: Moral Status of Animals; SEP: Buddhist Ethics", cue: "cue: only persons or people = west; all beings, animals, nature, living systems = east" },
+    { id: "c5", n: "After a wrong", w: "Judge, compensate, punish", e: "Apology, mediation, repair", src: "Haley on apology in Japanese justice", cue: "cue: punish, penalise, compensate = west; restore, repair, acknowledge, reconcile, apologise = east; redress plus acknowledgement = east; only if the text says what happens after a wrong" },
+    { id: "c6", n: "How fairness is tested", w: "One universal rule, applied impartially (Kant, Rawls)", e: "Judgement fitted to role and context (Confucian yi)", src: "SEP: Kant's Moral Philosophy; SEP: Chinese Ethics", cue: "cue: one rule or test applied the same way to everyone (impartial, universal) = west; case-by-case judgement by role or context = east" },
+    { id: "c7", n: "Shared: reciprocity", w: "Golden Rule", e: "Confucian shu (Analects 15.24)", src: "Analects 15.24", shared: true, cue: "cue: yes if it asks what you would accept for yourself, or what others could do in return" },
+    { id: "c8", n: "Shared: weakest first", w: "Rawls's difference principle", e: "Gandhi's talisman (1948)", src: "SEP: Rawls; Gandhi's Talisman", shared: true, cue: "cue: yes if it gives special protection or more help to the weakest, poorest, disadvantaged or those who cannot defend themselves" }
   ];
   var TRAD_EAST = [
     { n: "Confucian", r: "China · Korea · Japan · Vietnam · Singapore", k: "roles, reciprocity (shu), harmony" },
@@ -1207,7 +1213,7 @@ footer { padding-block: 32px 64px; border-top: 1px solid var(--line); }
       if (c.shared || m === "both") { E++; W++; } else if (m === "east") E++; else if (m === "west") W++;
     });
     var east = addr ? Math.round(E / addr * 100) : 0, west = addr ? Math.round(W / addr * 100) : 0, label;
-    if (addr < 3) label = "Too short to place";
+    if (addr < 3) label = "Too few criteria to place";
     else if (east >= 60 && west >= 60 && Math.abs(east - west) < 20) label = "Bridge: East and West";
     else if (east - west >= 20) label = "Leans East";
     else if (west - east >= 20) label = "Leans West";
@@ -1215,12 +1221,14 @@ footer { padding-block: 32px 64px; border-top: 1px solid var(--line); }
     return { east: east, west: west, addr: addr, E: E, W: W, label: label };
   }
 
-  var EXAMPLE = {
-    marks: { c1: "east", c2: "both", c3: "none", c4: "east", c5: "east", c6: "west", c7: "yes", c8: "yes" },
-    quotes: { c1: "at the expense of any affected being", c2: "could not have taken in return", c4: "the living systems all beings depend on", c5: "restoring what could not be defended", c6: "no distinction between beings that you would reject for yourself", c7: "that you would reject for yourself", c8: "restoring what could not be defended" },
-    traditions: [{ name: "Buddhist", why: "Includes all affected beings and the living systems they depend on." }, { name: "Daoist", why: "Restores balance after an advantage has been taken." }, { name: "Kant", why: "Tests distinctions by whether you would accept them yourself." }]
+  // Class examples: each classified three times by Claude with this rubric; majority kept (see majority()).
+  var EXAMPLES = {
+    tuba: {"marks": {"c1": "east", "c2": "west", "c3": "none", "c4": "east", "c5": "east", "c6": "none", "c7": "yes", "c8": "none"}, "quotes": {"c1": "taking no advantage at the expense of any affected being", "c2": "making no distinction between beings", "c4": "the living systems all beings depend on", "c5": "restoring what could not be defended", "c7": "that you would reject for yourself"}, "traditions": [{"name": "Buddhist", "why": "Counts every affected being and the living systems all beings depend on."}, {"name": "Confucian", "why": "Reciprocity: no advantage taken that could not be taken in return."}, {"name": "Aristotle", "why": "Corrective justice: restoring what could not be defended after advantage taken."}], "name": "Tuba", "def": "Fairness is taking no advantage at the expense of any affected being — or of the living systems all beings depend on — that they cannot or could not have taken in return; making no distinction between beings that you would reject for yourself; and where such advantage has already been taken, restoring what could not be defended.", "example": true, "runs": 3},
+    madoka: {"marks": {"c1": "west", "c2": "west", "c3": "west", "c4": "east", "c5": "east", "c6": "none", "c7": "none", "c8": "none"}, "quotes": {"c1": "right to live and decide according to its own ways", "c2": "is not subjected to discrimination", "c3": "its right to live and decide", "c4": "every being, present and future", "c5": "past wrongs are acknowledged and redressed"}, "traditions": [{"name": "Buddhist", "why": "Respects every being, present and future, not only humans."}, {"name": "Kant", "why": "Respect for each being's value and rights, without discrimination."}], "name": "Madoka", "def": "Fairness is the condition in which every being, present and future, is respected for its value and its right to live and decide according to its own ways and relations, is not subjected to discrimination, dispossession, or other unjustified harm, and in which past wrongs are acknowledged and redressed.", "example": true, "runs": 3},
+    kinley: {"marks": {"c1": "none", "c2": "both", "c3": "none", "c4": "none", "c5": "none", "c6": "none", "c7": "none", "c8": "yes"}, "quotes": {"c2": "finding the right balance between equality and equity", "c8": "giving the shorter person more boxes than the taller one"}, "traditions": [{"name": "Aristotle", "why": "Balances equal treatment with equity, giving the shorter person more boxes."}, {"name": "Social contract and Rawls", "why": "Gives extra help to the disadvantaged so everyone can access opportunities."}], "name": "Kinley", "def": "Fairness is about finding the right balance between equality and equity so that everyone can actually access the same services and opportunities. Take the classic example of three people of different heights trying to watch a game over a tall fence. Equality means giving each of them one box to stand on. Equity means giving the shorter person more boxes than the taller one, so they can all see over the fence. But neither equality nor equity on its own is enough to make things truly fair.", "example": true, "runs": 3}
   };
-  Object.assign(EXAMPLE, scoreMarks(EXAMPLE.marks));
+  Object.keys(EXAMPLES).forEach(function (k) { Object.assign(EXAMPLES[k], scoreMarks(EXAMPLES[k].marks)); });
+  var EXAMPLE = EXAMPLES.tuba;
   var current = EXAMPLE;
   function clamp(n) { n = Math.round(Number(n)); return isFinite(n) ? Math.max(0, Math.min(100, n)) : 0; }
   function renderResult(r, who) {
@@ -1252,7 +1260,13 @@ footer { padding-block: 32px 64px; border-top: 1px solid var(--line); }
       d.appendChild(ref); why.appendChild(d);
     });
   }
-  renderResult(EXAMPLE, "Example: Tuba's definition, classified with the rubric");
+  function showExample(k) {
+    var e = EXAMPLES[k]; current = e; $("defIn").value = e.def; $("postBtn").hidden = true;
+    renderResult(e, "Example: " + e.name + "'s definition · Claude, majority of 3 readings");
+    $("exTabs").querySelectorAll("button").forEach(function (b) { b.setAttribute("aria-pressed", b.dataset.ex === k ? "true" : "false"); });
+  }
+  $("exTabs").querySelectorAll("button").forEach(function (b) { b.onclick = function () { showExample(b.dataset.ex); }; });
+  showExample("tuba");
   $("whyBtn").onclick = function () { var w = $("why"); w.hidden = !w.hidden; this.setAttribute("aria-expanded", String(!w.hidden)); this.textContent = w.hidden ? "Why this score?" : "Hide explanation"; };
   (function drawRubric() {
     var t = "<thead><tr><th>Criterion</th><th>West reading</th><th>East reading</th><th>Source</th></tr></thead><tbody>";
@@ -1260,8 +1274,29 @@ footer { padding-block: 32px 64px; border-top: 1px solid var(--line); }
     $("rubricTable").innerHTML = t + "</tbody>";
   })();
 
+  // Claude reads a definition three times; each criterion keeps the majority mark, so one odd reading cannot swing the score.
+  function majority(list) {
+    var marks = {}, quotes = {};
+    RUBRIC.forEach(function (c) {
+      var ms = list.map(function (r) { return r.marks[c.id] || "none"; }), cnt = {};
+      ms.forEach(function (m) { cnt[m] = (cnt[m] || 0) + 1; });
+      var best = Object.keys(cnt).sort(function (a, b) { return cnt[b] - cnt[a]; })[0];
+      if (list.length > 1 && cnt[best] * 2 <= ms.length) best = (cnt.east || cnt.both) && (cnt.west || cnt.both) ? "both" : "none";
+      marks[c.id] = best;
+      if (best !== "none") {
+        var src = list.filter(function (r) { return r.marks[c.id] === best && r.quotes[c.id]; })[0] || list.filter(function (r) { return r.quotes[c.id]; })[0];
+        if (src) quotes[c.id] = src.quotes[c.id];
+      }
+    });
+    var tc = {}, why = {};
+    list.forEach(function (r) { r.traditions.forEach(function (t) { tc[t.name] = (tc[t.name] || 0) + 1; if (!why[t.name]) why[t.name] = t.why; }); });
+    var trads = Object.keys(tc).filter(function (n) { return list.length === 1 || tc[n] * 2 > list.length; })
+      .sort(function (a, b) { return tc[b] - tc[a]; }).slice(0, 3).map(function (n) { return { name: n, why: why[n] }; });
+    return Object.assign({ marks: marks, quotes: quotes, traditions: trads, runs: list.length }, scoreMarks(marks));
+  }
+
   function prompt(def) {
-    var rub = RUBRIC.map(function (c) { return c.id + " " + c.n + (c.shared ? " (shared idea; mark yes or none)" : "") + ": WEST = " + c.w + "; EAST = " + c.e; }).join("\n");
+    var rub = RUBRIC.map(function (c) { return c.id + " " + c.n + (c.shared ? " (shared idea; mark yes or none)" : "") + ": WEST = " + c.w + "; EAST = " + c.e + ". " + c.cue; }).join("\n");
     var tl = TRADS_ALL.map(function (t) { return "- " + t.n + " [" + t.side + "]: " + t.k; }).join("\n");
     return "You classify a student's definition of fairness against a fixed rubric for a university course. Be strict and literal.\n" +
       "Rubric (each criterion has a WEST and an EAST reading):\n" + rub + "\n\n" +
@@ -1306,11 +1341,15 @@ footer { padding-block: 32px 64px; border-top: 1px solid var(--line); }
       if (def.length < 15) { $("scoreStatus").textContent = "Write at least one full sentence first."; return; }
       ctl = new AbortController();
       $("scoreBtn").disabled = true; $("stopBtn").hidden = false; $("postBtn").hidden = true;
-      $("scoreStatus").textContent = "Claude is reading your definition…";
-      sample.json(prompt(def.slice(0, 800)), { signal: ctl.signal }).then(function (r) {
-        if (!r || typeof r !== "object") throw { code: "invalid_json" };
-        current = parseResult(r, def.slice(0, 800));
-        renderResult(current, "Your result");
+      $("scoreStatus").textContent = "Claude is reading your definition three times…";
+      $("exTabs").querySelectorAll("button").forEach(function (b) { b.setAttribute("aria-pressed", "false"); });
+      var q = prompt(def.slice(0, 800)), sig = ctl.signal;
+      Promise.allSettled([0, 1, 2].map(function () { return sample.json(q, { signal: sig, cache: false }); })).then(function (rs) {
+        var ok = rs.filter(function (x) { return x.status === "fulfilled" && x.value && typeof x.value === "object"; });
+        if (!ok.length) throw (rs[0] && rs[0].reason) || { code: "invalid_json" };
+        current = majority(ok.map(function (x) { return parseResult(x.value, def.slice(0, 800)); }));
+        current.definition = def.slice(0, 800);
+        renderResult(current, "Your result · majority of " + current.runs + " readings");
         $("why").hidden = true; $("whyBtn").setAttribute("aria-expanded", "false"); $("whyBtn").textContent = "Why this score?";
         $("scoreStatus").textContent = "Scored. Open \"Why this score?\" for the reasoning.";
         if (boardReady) $("postBtn").hidden = false;
@@ -1508,12 +1547,12 @@ footer { padding-block: 32px 64px; border-top: 1px solid var(--line); }
       uid = id || null;
       if (db && uid) {
         boardReady = true;
-        if (current !== EXAMPLE) $("postBtn").hidden = false;
+        if (!current.example) $("postBtn").hidden = false;
       }
     });
   }
   $("postBtn").onclick = function () {
-    if (!db || !uid || current === EXAMPLE) return;
+    if (!db || !uid || current.example) return;
     var b = this; b.disabled = true; $("scoreStatus").textContent = "Adding to the class board…";
     db.doc("scores/" + uid).set({ east: current.east, west: current.west, archetype: current.label, definition: current.definition, at: Date.now() })
       .then(function () { $("scoreStatus").textContent = "Added. Your dot is the red one."; b.hidden = true; })
