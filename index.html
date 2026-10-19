@@ -367,6 +367,36 @@ table.score button { background: none; border: 0; padding: 0; font-weight: 700; 
   .scrim[hidden] { display: none; }
 }
 
+/* ISS case */
+.iss { display: grid; gap: 14px; padding: 20px; margin-block: 8px 12px; border: 1px solid var(--lilac); border-radius: 18px; background: var(--surface); }
+.iss-legend { display: flex; flex-wrap: wrap; gap: 8px 14px; font-size: 13px; font-weight: 600; }
+.iss-legend span { display: inline-flex; align-items: center; gap: 6px; }
+.iss-legend i { width: 12px; height: 12px; border-radius: 3px; display: inline-block; }
+.iss-grid { display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1fr); gap: 12px; }
+@media (max-width: 700px) { .iss-grid { grid-template-columns: minmax(0,1fr); } }
+.sbar { display: flex; height: 34px; border-radius: 8px; overflow: hidden; gap: 2px; background: var(--surface); }
+.sbar div { height: 100%; }
+.sbar-lab { display: flex; flex-wrap: wrap; gap: 4px 14px; font-size: 13px; font-variant-numeric: tabular-nums; }
+.sbar-lab span { display: inline-flex; gap: 6px; align-items: center; white-space: nowrap; }
+.sbar-lab i { width: 10px; height: 10px; border-radius: 2px; display: inline-block; }
+.rules { display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1fr); gap: 8px; }
+.rules > div { display: grid; grid-template-columns: 30px minmax(0,1fr); grid-template-rows: auto auto; column-gap: 8px; align-items: center; background: var(--soft); border-radius: 10px; padding: 8px 10px; }
+.rules .ri { grid-row: 1 / 3; width: 30px; height: 30px; border-radius: 50%; background: var(--lilac); display: grid; place-items: center; font-weight: 700; }
+.rules b { font-size: 13.5px; line-height: 1.25; } .rules small { font-size: 12px; color: var(--muted); }
+.tl { display: grid; grid-template-columns: repeat(5, minmax(0,1fr)); gap: 0; position: relative; padding-top: 18px; }
+.tl::before { content: ""; position: absolute; left: 6px; right: 6px; top: 7px; height: 2px; background: var(--lilac); }
+.tl > div { position: relative; display: grid; gap: 2px; padding-right: 8px; font-size: 13px; }
+.tl > div::before { content: ""; position: absolute; top: -16px; left: 0; width: 12px; height: 12px; border-radius: 50%; background: var(--surface); border: 2px solid var(--murasaki); }
+.tl > div.bad::before { border-color: var(--akane); background: var(--akane); }
+.tl b { font-family: var(--display); font-size: 15px; }
+.tl span { color: var(--muted); line-height: 1.3; }
+@media (max-width: 600px) { .tl { grid-template-columns: minmax(0,1fr); gap: 10px; padding-top: 0; padding-left: 22px; } .tl::before { left: 5px; right: auto; top: 4px; bottom: 4px; width: 2px; height: auto; } .tl > div::before { top: 3px; left: -22px; } }
+.verdict2 { display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1fr); gap: 12px; }
+@media (max-width: 600px) { .verdict2 { grid-template-columns: minmax(0,1fr); } }
+.verdict2 > div { display: grid; gap: 4px; border-radius: 12px; padding: 12px 14px; font-size: 14px; }
+.verdict2 .ok2 { background: var(--soft); } .verdict2 .no2 { background: var(--c2); }
+.verdict2 b { font-family: var(--display); }
+
 #tip { position: fixed; z-index: 50; pointer-events: none; background: var(--surface); color: var(--ink); border: 1px solid var(--lilac); box-shadow: 0 6px 20px rgba(92, 17, 66, .12); font-size: 13px; line-height: 1.4; padding: 8px 10px; border-radius: 8px; max-width: 240px; }
 details.src { margin-top: 8px; }
 details.src summary { cursor: pointer; font-weight: 700; }
@@ -612,6 +642,57 @@ footer { padding-block: 32px 64px; border-top: 1px solid var(--line); }
         <div class="flip" role="button" tabindex="0" aria-pressed="false" aria-label="Radio spectrum · ITU: flip card"><div class="flip-in"><div class="face front"><span class="yr">Since 1906</span><h4>Radio spectrum · ITU</h4><span class="hook">Airwaves are finite and cross borders.</span><span class="turn">Flip ↻</span></div><div class="face back"><h4>Radio spectrum · ITU</h4><dl><dt>States keep</dt><dd>Licensing their own users</dd><dt>States give</dt><dd>The right to interfere across borders</dd><dt>Holder</dt><dd>A treaty and a shared register</dd></dl></div></div></div>
         <div class="flip" role="button" tabindex="0" aria-pressed="false" aria-label="Nuclear · IAEA: flip card"><div class="flip-in"><div class="face front"><span class="yr">Since 1957</span><h4>Nuclear · IAEA</h4><span class="hook">The same power can light a city or destroy one.</span><span class="turn">Flip ↻</span></div><div class="face back"><h4>Nuclear · IAEA</h4><dl><dt>States get</dt><dd>Access to peaceful uses</dd><dt>States give</dt><dd>Accepting inspections</dd><dt>Holder</dt><dd>Vienna. The US started it but did not own it.</dd></dl></div></div></div>
         <div class="flip" role="button" tabindex="0" aria-pressed="false" aria-label="Medicines · patents: flip card"><div class="flip-in"><div class="face front"><span class="yr">TRIPS</span><h4>Medicines · patents</h4><span class="hook">Life-saving drugs locked behind patents.</span><span class="turn">Flip ↻</span></div><div class="face back"><h4>Medicines · patents</h4><dl><dt>Firms keep</dt><dd>Their patent rights</dd><dt>Public gets</dt><dd>Fair, tiered access</dd><dt>Holder</dt><dd>Neutral pooled access</dd></dl></div></div></div>
+      </div>
+
+      <!-- Case from class: ISS -->
+      <div class="iss" id="iss">
+        <div class="kicker">Case from class · 20 Oct 2026</div>
+        <h3 class="subhead" style="margin-top:4px">International Space Station: shared, but not neutral</h3>
+        <div class="figure"><svg id="issSvg" viewBox="0 0 640 230" role="img" aria-label="Diagram of the ISS: each module is owned by the partner that built it"></svg></div>
+        <div class="iss-legend" id="issLegend"></div>
+        <p class="note">Hover a module. Each partner owns, registers and controls what it built (IGA Art. 5).</p>
+
+        <div class="iss-grid">
+          <div class="card">
+            <div class="kicker">Who gets the lab time? (US-run labs)</div>
+            <div class="sbar" id="issBar" role="img" aria-label="NASA 76.6%, Japan 12.8%, Europe 8.3%, Canada 2.3%"></div>
+            <div class="sbar-lab" id="issBarLab"></div>
+            <p class="note">Crew time, power and services are split by what each partner put in.</p>
+          </div>
+          <div class="card">
+            <div class="kicker">Four rules</div>
+            <div class="rules">
+              <div><span class="ri">⌂</span><b>Law follows the module</b><small>Art. 5, 21</small></div>
+              <div><span class="ri">⚖</span><b>Crime follows nationality</b><small>Art. 22</small></div>
+              <div><span class="ri">⇄</span><b>Partners can't sue each other</b><small>Art. 16</small></div>
+              <div><span class="ri">%</span><b>Use follows contribution</b><small>MoUs</small></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="tl" aria-label="Timeline">
+          <div><b>1998</b><span>15 governments sign the agreement</span></div>
+          <div><b>2001</b><span>Agreement in force</span></div>
+          <div class="bad"><b>2011</b><span>US law bars NASA from working with China</span></div>
+          <div><b>2028</b><span>Russia commits until here</span></div>
+          <div><b>~2030</b><span>Planned deorbit</span></div>
+        </div>
+
+        <div class="verdict2">
+          <div class="ok2"><b>✓ What works</b><span>Clear rights by contribution</span><span>Survived political tension</span></div>
+          <div class="no2"><b>✗ Not neutral</b><span>NASA leads; no neutral host like the IAEA</span><span>One country's law decides who joins (China built Tiangong)</span></div>
+        </div>
+        <p class="note">Lesson for AI: share rights by contribution, but put custody on neutral ground (Prof. Maracke).</p>
+        <p class="note">Sources:
+          <a href="https://www.nasa.gov/history/20-years-ago-station-partners-sign-intergovernmental-agreement-iga">NASA: IGA signing (1998)</a> ·
+          <a href="https://www.esa.int/Our_Activities/Human_Spaceflight/International_Space_Station/International_Space_Station_legal_framework">ESA: ISS legal framework</a> ·
+          <a href="https://www.esa.int/About_Us/ECSL_-_European_Centre_for_Space_Law/Lawyers_too_celebrate_20_years_of_continuous_human_presence_on_the_ISS">ESA ECSL: jurisdiction and Art. 22</a> ·
+          <a href="https://www.unoosa.org/pdf/pres/lsc2013/tech-05E.pdf">UNOOSA: cross-waiver (Art. 16)</a> ·
+          <a href="https://en.wikipedia.org/wiki/Politics_of_the_International_Space_Station">Politics of the ISS (usage shares)</a> ·
+          <a href="https://www.csis.org/analysis/bad-idea-wolf-amendment-limiting-collaboration-china-space">CSIS: Wolf Amendment</a> ·
+          <a href="https://spacepolicyonline.com/news/russia-agrees-to-operate-iss-through-2028/">SpacePolicyOnline: Russia to 2028</a> ·
+          <a href="https://www.themoscowtimes.com/2025/08/01/russia-and-us-agree-to-extend-international-space-station-operations-to-2028">Moscow Times: deorbit by 2030</a>
+        </p>
       </div>
 
       <h3>Three asks</h3>
@@ -1115,6 +1196,37 @@ footer { padding-block: 32px 64px; border-top: 1px solid var(--line); }
     f.addEventListener("click", flip);
     f.addEventListener("keydown", function (e) { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); flip(); } });
   });
+
+  /* ---------- ISS case ---------- */
+  (function () {
+    var P = { us: ["United States", "#8A2E6A"], ru: ["Russia", "#D9601A"], eu: ["Europe (ESA)", "#2F6DB5"], jp: ["Japan", "#2E8B57"], ca: ["Canada", "#A97C00"] };
+    var svg = $("issSvg");
+    function mod(x, y, w, h, who, name, note) {
+      var g = el("g", { tabindex: 0, role: "img", "aria-label": name + ", " + P[who][0] }, svg);
+      el("rect", { x: x, y: y, width: w, height: h, rx: 8, fill: P[who][1], stroke: "#FFFFFF", "stroke-width": 2 }, g);
+      txt("text", { x: x + w / 2, y: y + h / 2 + 4, "text-anchor": "middle", "font-size": 12, "font-weight": 700, fill: "#FFFFFF" }, name, g);
+      bindTip(g, function () { return [name + " · " + P[who][0], note]; });
+    }
+    // truss + solar arrays (US-built)
+    el("rect", { x: 40, y: 40, width: 560, height: 12, rx: 4, fill: P.us[1] }, svg);
+    [55, 135, 445, 525].forEach(function (x) { el("rect", { x: x, y: 8, width: 60, height: 28, rx: 3, fill: "#DDC8EE", stroke: P.us[1], "stroke-width": 1.5 }, svg); el("rect", { x: x, y: 56, width: 60, height: 28, rx: 3, fill: "#DDC8EE", stroke: P.us[1], "stroke-width": 1.5 }, svg); });
+    txt("text", { x: 320, y: 32, "text-anchor": "middle", "font-size": 11, class: "svg-muted" }, "Truss and solar arrays (US)", svg);
+    el("line", { x1: 320, y1: 52, x2: 320, y2: 110, stroke: P.us[1], "stroke-width": 6 }, svg);
+    mod(40, 120, 205, 44, "ru", "Russian segment", "Russian modules such as Zvezda. Russia registers and controls them, so Russian law applies.");
+    mod(250, 120, 80, 44, "us", "Unity", "US node linking the two segments.");
+    mod(335, 120, 95, 44, "us", "Destiny", "US lab. NASA 97.7%, Canada 2.3% of its use.");
+    mod(435, 92, 95, 40, "eu", "Columbus", "European lab. ESA 51%, NASA 46.7%, Canada 2.3%.");
+    mod(435, 140, 95, 40, "jp", "Kibo", "Japanese lab. JAXA 51%, NASA 46.7%, Canada 2.3%.");
+    var arm = el("g", { tabindex: 0, role: "img", "aria-label": "Canadarm2, Canada" }, svg);
+    el("path", { d: "M300 175 L300 200 L380 200 L410 185", fill: "none", stroke: P.ca[1], "stroke-width": 7, "stroke-linecap": "round", "stroke-linejoin": "round" }, arm);
+    txt("text", { x: 300, y: 222, "font-size": 12, "font-weight": 700, fill: P.ca[1] }, "Canadarm2", arm);
+    bindTip(arm, function () { return ["Canadarm2 · Canada", "Robotic arm. Canada's contribution earns its 2.3% share."]; });
+    var lg = $("issLegend");
+    Object.keys(P).forEach(function (k) { var sp = document.createElement("span"); var i = document.createElement("i"); i.style.background = P[k][1]; sp.append(i, document.createTextNode(P[k][0])); lg.appendChild(sp); });
+    var SH = [["NASA", 76.6, P.us[1]], ["Japan", 12.8, P.jp[1]], ["Europe", 8.3, P.eu[1]], ["Canada", 2.3, P.ca[1]]];
+    SH.forEach(function (x) { var d = document.createElement("div"); d.style.width = x[1] + "%"; d.style.background = x[2]; $("issBar").appendChild(d); bindTip(d, function () { return [x[0], x[1] + "% of crew time, power and services"]; });
+      var sp = document.createElement("span"); var i = document.createElement("i"); i.style.background = x[2]; sp.append(i, document.createTextNode(x[0] + " " + x[1] + "%")); $("issBarLab").appendChild(sp); });
+  })();
 
   /* ---------- reading: who holds the keys ---------- */
   var KN = ["US", "EU", "Japan", "Korea", "India", "Africa", "Brazil"];
