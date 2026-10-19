@@ -397,6 +397,54 @@ table.score button { background: none; border: 0; padding: 0; font-weight: 700; 
 .verdict2 .ok2 { background: var(--soft); } .verdict2 .no2 { background: var(--c2); }
 .verdict2 b { font-family: var(--display); }
 
+/* Part 5 */
+.hbars { display: grid; gap: 6px; }
+.hb { display: grid; grid-template-columns: 92px minmax(0,1fr) 28px; gap: 8px; align-items: center; font-size: 13.5px; }
+.hb-t { height: 14px; background: var(--soft); border-radius: 999px; overflow: hidden; }
+.hb-t div { height: 100%; border-radius: 999px; }
+.hb b { font-variant-numeric: tabular-nums; text-align: right; }
+.sbar.tall { height: 40px; }
+.verdict-line { background: var(--soft); border-left: 4px solid var(--lilac); border-radius: 10px; padding: 10px 14px; font-size: 14.5px; }
+.flowx { display: flex; flex-wrap: wrap; align-items: stretch; gap: 8px; }
+.flowx > div { flex: 1 1 150px; display: grid; gap: 2px; background: var(--soft); border-radius: 12px; padding: 10px 12px; }
+.flowx small { font-size: 11px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
+.flowx b { font-family: var(--display); font-size: 15px; line-height: 1.3; }
+.flowx .ar { align-self: center; color: var(--muted); font-weight: 700; }
+.th-row { display: grid; grid-template-columns: minmax(0, 1.6fr) minmax(0, .8fr); gap: 16px; align-items: start; margin-top: 6px; }
+@media (max-width: 600px) { .th-row { grid-template-columns: minmax(0,1fr); } }
+.th-stat { display: grid; gap: 4px; }
+.th-meter { display: grid; gap: 6px; }
+.m3 { display: flex; gap: 4px; }
+.m3 i { flex: 1; height: 10px; border-radius: 999px; background: var(--soft); }
+.m3 i.on { background: var(--head); }
+.th-crit { font-size: 14px; background: var(--c2); border-radius: 10px; padding: 10px 12px; }
+.others { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 10px; }
+@media (max-width: 700px) { .others { grid-template-columns: minmax(0,1fr); } }
+.others > div { display: grid; gap: 4px; align-content: start; background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 12px; font-size: 13.5px; }
+.others b { font-family: var(--display); font-size: 14.5px; }
+.pill2 { justify-self: start; font-size: 11.5px; font-weight: 700; border-radius: 999px; padding: 1px 9px; background: var(--lilac); }
+.tg { display: inline-grid; place-items: center; width: 20px; height: 20px; border-radius: 6px; font-style: normal; font-size: 11px; font-weight: 700; margin-right: 6px; border: 1.5px solid var(--murasaki); }
+.tg.I { background: var(--murasaki); color: #FBF3EC; } .tg.R { background: var(--surface); color: var(--murasaki); } .tg.M { background: var(--lilac); color: var(--murasaki); }
+.lanes { display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1fr); gap: 16px; }
+@media (max-width: 640px) { .lanes { grid-template-columns: minmax(0,1fr); } }
+.lane-h { font-family: var(--display); font-weight: 700; margin-bottom: 6px; } .lane-h.w { color: var(--west); } .lane-h.a { color: var(--asia); }
+.lane { list-style: none; margin: 0; padding: 0 0 0 14px; border-left: 2px solid var(--lilac); display: grid; gap: 6px; }
+.lane li { display: grid; grid-template-columns: auto minmax(0,1fr); grid-template-rows: auto auto; column-gap: 2px; align-items: center; padding: 6px 10px; border-radius: 10px; background: var(--surface); border: 1px solid var(--line); cursor: help; }
+.lane li .tg { grid-row: 1 / 3; }
+.lane li b { font-size: 14px; } .lane li small { font-size: 12px; color: var(--muted); }
+.lane li:hover, .lane li:focus-visible { background: var(--soft); }
+.cross { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 8px; }
+.cross > div { display: grid; gap: 2px; padding: 10px 12px; border-radius: 12px; background: var(--soft); font-size: 13.5px; }
+.cross .dir { justify-self: start; font-size: 11px; font-weight: 700; border-radius: 999px; padding: 1px 8px; background: var(--surface); border: 1px solid var(--lilac); }
+.cross small { color: var(--muted); font-size: 12px; }
+.crit4 { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 10px; }
+@media (max-width: 600px) { .crit4 { grid-template-columns: minmax(0,1fr); } }
+.crit4 > div { display: grid; gap: 4px; background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 12px 14px; font-size: 14px; }
+.crit4 b { font-family: var(--display); }
+.concl { display: grid; gap: 4px; background: var(--c1); border-radius: 14px; padding: 14px 16px; font-size: 14.5px; }
+.concl b { font-family: var(--display); font-size: 1.05rem; }
+#roots-s1, #roots-s2, #roots-s3, #roots-s4 { scroll-margin-top: 80px; }
+
 #tip { position: fixed; z-index: 50; pointer-events: none; background: var(--surface); color: var(--ink); border: 1px solid var(--lilac); box-shadow: 0 6px 20px rgba(92, 17, 66, .12); font-size: 13px; line-height: 1.4; padding: 8px 10px; border-radius: 8px; max-width: 240px; }
 details.src { margin-top: 8px; }
 details.src summary { cursor: pointer; font-weight: 700; }
@@ -417,6 +465,7 @@ footer { padding-block: 32px 64px; border-top: 1px solid var(--line); }
       <a class="nv" href="#asia" data-v="asia"><span class="nv-n">2</span>Fairness in Asian thought</a>
       <a class="nv" href="#gov" data-v="gov"><span class="nv-n">3</span>AI safety, East &amp; West</a>
       <a class="nv" href="#vs" data-v="vs"><span class="nv-n">4</span>Same meaning?</a>
+      <a class="nv" href="#roots" data-v="roots"><span class="nv-n">5</span>Why individual vs relational?</a>
       <div class="nv-group">Fun activity</div>
       <a class="nv fun" href="#game" data-v="game"><span class="nv-n">◎</span>Fairness Compass</a>
     </nav>
@@ -453,13 +502,14 @@ footer { padding-block: 32px 64px; border-top: 1px solid var(--line); }
   </header>
   <div class="route">
     <div class="kicker">How to read this page</div>
-    <h2>One question, four parts</h2>
+    <h2>One question, five parts</h2>
     <p class="sub">Can fairness be built into technology? Each part answers one piece of that question. Go in order, then test yourself.</p>
     <div class="route-grid">
       <a class="route-card" href="#course"><span class="nv-n">1</span><b>The course</b><span>What does "fair technology" mean?</span></a>
       <a class="route-card" href="#asia"><span class="nv-n">2</span><b>Fairness in Asian thought</b><span>How do Asian traditions define fairness?</span></a>
       <a class="route-card" href="#gov"><span class="nv-n">3</span><b>AI safety, East &amp; West</b><span>How do governments turn values into AI rules?</span></a>
       <a class="route-card" href="#vs"><span class="nv-n">4</span><b>Same meaning?</b><span>Do East and West mean the same by the same words?</span></a>
+      <a class="route-card" href="#roots"><span class="nv-n">5</span><b>Why individual vs relational?</b><span>Climate, land, history, or philosophy?</span></a>
       <a class="route-card fun" href="#game"><span class="nv-n">◎</span><b>Fairness Compass</b><span>Fun activity: how Eastern or Western is your own definition?</span></a>
     </div>
   </div>
@@ -468,7 +518,7 @@ footer { padding-block: 32px 64px; border-top: 1px solid var(--line); }
   <!-- PART 1: The course -->
   <section class="part vp" id="course" hidden>
     <div class="part-head">
-      <div class="kicker">Part 1 of 4 · The course</div>
+      <div class="kicker">Part 1 of 5 · The course</div>
       <h2>Can fairness be built into technology?</h2>
       <p class="sub">The course frame in two steps: how a system turns data into decisions, then why fairness is hard to build in.</p>
     </div>
@@ -505,7 +555,7 @@ footer { padding-block: 32px 64px; border-top: 1px solid var(--line); }
   <!-- PART 2: Asian context -->
   <section class="part vp" id="asia" hidden>
     <div class="part-head">
-      <div class="kicker">Part 2 of 4 · My research</div>
+      <div class="kicker">Part 2 of 5 · My research</div>
       <h2>Fairness in Asian thought</h2>
       <p class="sub">Three steps for a newcomer. First the big idea that sets Asian ethics apart, then the five traditions behind it, then how each region compares with the West.</p>
     </div>
@@ -546,7 +596,7 @@ footer { padding-block: 32px 64px; border-top: 1px solid var(--line); }
             </svg>
           </div>
           <p class="sub">So the fairness question changes from <b>"Was I treated equally?"</b> to <b>"Was this relationship kept in balance?"</b></p>
-          <p class="note">A broad tendency, not a rule. Based on Confucian role ethics (R. Ames, <i>Confucian Role Ethics</i>, 2011) and Watsuji's "betweenness" (Stanford Encyclopedia of Philosophy). Western thought also has relational strands, such as care ethics.</p>
+          <p class="note">A broad tendency, not a rule. Based on Confucian role ethics (R. Ames, <i>Confucian Role Ethics: A Vocabulary</i>, 2011) and Watsuji's "betweenness" (Stanford Encyclopedia of Philosophy). Western thought also has relational strands, such as care ethics.</p>
         </div>
       </div>
 
@@ -584,7 +634,7 @@ footer { padding-block: 32px 64px; border-top: 1px solid var(--line); }
             <button class="linkbtn" id="radarTableBtn" type="button" aria-expanded="false">Show as table</button>
           </div>
           <div class="tablewrap" id="radarTable" hidden></div>
-          <p class="note">Source: Hofstede, Hofstede &amp; Minkov, <i>Cultures and Organizations</i> (3rd ed., 2010), dimension data matrix (version 2015, <a href="https://geerthofstede.com/research-and-vsm/dimension-data-matrix/">geerthofstede.com</a>). SE Asia = average of Thailand, Indonesia and Vietnam; West = average of USA, UK, Germany and France (rounded). Culture scores describe national averages, not individuals.</p>
+          <p class="note">Source: Hofstede, Hofstede &amp; Minkov, <i>Cultures and Organizations</i> (3rd ed., 2010), dimension data matrix (dataset version 2015-12-08, <a href="https://geerthofstede.com/research-and-vsm/dimension-data-matrix/">geerthofstede.com</a>). SE Asia = average of Thailand, Indonesia and Vietnam; West = average of USA, UK, Germany and France (rounded). Culture scores describe national averages, not individuals.</p>
         </div>
       </div>
     </div>
@@ -593,7 +643,7 @@ footer { padding-block: 32px 64px; border-top: 1px solid var(--line); }
   <!-- PART 3: AI safety by country -->
   <section class="part vp" id="gov" hidden>
     <div class="part-head">
-      <div class="kicker">Part 3 of 4 · Governance</div>
+      <div class="kicker">Part 3 of 5 · Governance</div>
       <h2>AI safety directions, East and West</h2>
       <p class="sub">Values become real when governments write rules. First see where nine countries sit, then check how each score was built, then read why one country should not control AI-powered defence.</p>
     </div>
@@ -673,25 +723,26 @@ footer { padding-block: 32px 64px; border-top: 1px solid var(--line); }
         <div class="tl" aria-label="Timeline">
           <div><b>1998</b><span>15 governments sign the agreement</span></div>
           <div><b>2001</b><span>Agreement in force</span></div>
-          <div class="bad"><b>2011</b><span>US law bars NASA from working with China</span></div>
-          <div><b>2028</b><span>Russia commits until here</span></div>
+          <div class="bad"><b>2011</b><span>US law restricts NASA's work with China</span></div>
+          <div><b>2028</b><span>Russia committed at least to here</span></div>
           <div><b>~2030</b><span>Planned deorbit</span></div>
         </div>
 
         <div class="verdict2">
           <div class="ok2"><b>✓ What works</b><span>Clear rights by contribution</span><span>Survived political tension</span></div>
-          <div class="no2"><b>✗ Not neutral</b><span>NASA leads; no neutral host like the IAEA</span><span>One country's law decides who joins (China built Tiangong)</span></div>
+          <div class="no2"><b>✗ Not neutral</b><span>NASA leads; no neutral host like the IAEA</span><span>One country's law limits who joins (China built Tiangong)</span></div>
         </div>
         <p class="note">Lesson for AI: share rights by contribution, but put custody on neutral ground (Prof. Maracke).</p>
         <p class="note">Sources:
           <a href="https://www.nasa.gov/history/20-years-ago-station-partners-sign-intergovernmental-agreement-iga">NASA: IGA signing (1998)</a> ·
           <a href="https://www.esa.int/Our_Activities/Human_Spaceflight/International_Space_Station/International_Space_Station_legal_framework">ESA: ISS legal framework</a> ·
-          <a href="https://www.esa.int/About_Us/ECSL_-_European_Centre_for_Space_Law/Lawyers_too_celebrate_20_years_of_continuous_human_presence_on_the_ISS">ESA ECSL: jurisdiction and Art. 22</a> ·
-          <a href="https://www.unoosa.org/pdf/pres/lsc2013/tech-05E.pdf">UNOOSA: cross-waiver (Art. 16)</a> ·
-          <a href="https://en.wikipedia.org/wiki/Politics_of_the_International_Space_Station">Politics of the ISS (usage shares)</a> ·
-          <a href="https://www.csis.org/analysis/bad-idea-wolf-amendment-limiting-collaboration-china-space">CSIS: Wolf Amendment</a> ·
-          <a href="https://spacepolicyonline.com/news/russia-agrees-to-operate-iss-through-2028/">SpacePolicyOnline: Russia to 2028</a> ·
-          <a href="https://www.themoscowtimes.com/2025/08/01/russia-and-us-agree-to-extend-international-space-station-operations-to-2028">Moscow Times: deorbit by 2030</a>
+          <a href="https://www.esa.int/About_Us/ECSL_-_European_Centre_for_Space_Law/Lawyers_too_celebrate_20_years_of_continuous_human_presence_on_the_ISS">ESA ECSL: Art. 5</a> ·
+          <a href="https://www.esa.int/About_Us/Law_at_ESA/Intellectual_Property_Rights/Patents_and_space-related_inventions">ESA: patents (Art. 21)</a> ·
+          <a href="https://www.everycrsreport.com/reports/LSB10869.html">CRS: criminal jurisdiction (Art. 22)</a> ·
+          <a href="https://en.wikipedia.org/wiki/Politics_of_the_International_Space_Station">Wikipedia: usage shares</a> (ESA's 8.3% confirmed by ESA) ·
+          <a href="https://researchpolicy.caltech.edu/research-security/international_collaboration/wolf-amendment-for-nasa-funding-and-work-with-jpl">Caltech: Wolf Amendment (2011)</a> ·
+          <a href="https://www.csis.org/analysis/bad-idea-wolf-amendment-limiting-collaboration-china-space">CSIS: its limits</a> ·
+          <a href="https://www.nasa.gov/news-release/nasa-selects-international-space-station-us-deorbit-vehicle/">NASA: ops to 2030, Russia to at least 2028, deorbit vehicle</a>
         </p>
       </div>
 
@@ -717,7 +768,7 @@ footer { padding-block: 32px 64px; border-top: 1px solid var(--line); }
   <!-- PART 3: side by side -->
   <section class="part vp" id="vs" hidden>
     <div class="part-head">
-      <div class="kicker">Part 4 of 4 · The assignment</div>
+      <div class="kicker">Part 4 of 5 · The assignment</div>
       <h2>Values East and West: same meaning or not?</h2>
       <p class="sub">This pulls Parts 2 and 3 together. First test single words, then compare the two views as a whole.</p>
     </div>
@@ -745,15 +796,111 @@ footer { padding-block: 32px 64px; border-top: 1px solid var(--line); }
       <a href="https://plato.stanford.edu/entries/watsuji-tetsuro/">SEP: Watsuji</a> ·
       <a href="https://plato.stanford.edu/entries/ethics-indian-buddhism/">SEP: Ethics in Indian and Tibetan Buddhism</a> ·
       <a href="https://plato.stanford.edu/entries/moral-animal/">SEP: Moral Status of Animals</a> ·
-      <a href="https://library.oapen.org/handle/20.500.12657/30726">Ames &amp; Rosemont, Confucian Role Ethics</a> ·
-      <a href="https://csts.arts.chula.ac.th/cest/feeds/Krisana/7156321v361p0324.pdf">Kitiyadisai (2005), privacy in Thailand</a> ·
-      <a href="https://www.ojp.gov/ncjrs/virtual-library/abstracts/toward-balancing-approach-use-apology-japanese-society">Apology in Japanese justice</a> ·
+      <a href="https://library.oapen.org/handle/20.500.12657/30726">Rosemont &amp; Ames (eds.), Confucian Role Ethics: A Moral Vision for the 21st Century? (2016)</a> ·
+      <a href="https://philarchive.org/rec/KITPRA">Kitiyadisai (2005), privacy in Thailand, Ethics and Information Technology 7(1)</a> ·
+      <a href="https://restorativejustice.org/rj-archive/apology-and-pardon-learning-from-japan/">Haley: apology and pardon in Japan</a> ·
       <a href="https://carnegiecouncil.org/publications/archive/morgenthau/254">Sen (1997), Human Rights and Asian Values</a> ·
       <a href="https://link.springer.com/article/10.1007/s13347-020-00413-8">Wong (2020)</a> ·
       <a href="https://arxiv.org/pdf/2111.07555">Fung &amp; Etienne (2021), Chinese vs EU AI principles</a> ·
-      <a href="https://ctext.org/analects">Analects (ctext.org)</a> ·
+      Analects <a href="https://ctext.org/analects/zi-lu">13.23</a>, <a href="https://ctext.org/analects/wei-ling-gong">15.24</a> (ctext.org) ·
       <a href="https://mkgandhi-sarvodaya.org/gandhi's_talisman.htm">Gandhi's Talisman</a>
     </p>
+  </section>
+
+  <!-- PART 5: roots -->
+  <section class="part vp" id="roots" hidden>
+    <div class="part-head">
+      <div class="kicker">Part 5 of 5 · Roots</div>
+      <h2>Why is the West called individualist, and the East relational?</h2>
+      <p class="sub">Four steps: is the gap real, do your three theories hold, which philosophies shaped each side, and what the critics say.</p>
+    </div>
+    <div class="steps">
+      <div class="step" id="roots-s1">
+        <div class="step-n">1</div>
+        <div class="step-body">
+          <h3>Is the gap real?</h3>
+          <div class="duo">
+            <div class="card">
+              <div class="kicker">Survey scores · Hofstede individualism (0–100)</div>
+              <div class="hbars" id="idvBars"></div>
+              <p class="note">Source: Hofstede dataset 2015-12-08.</p>
+            </div>
+            <div class="card">
+              <div class="kicker">But direct tests · 35 Japan–US studies</div>
+              <div class="sbar tall" id="tkBar" role="img" aria-label="5 studies support the stereotype, 19 find no clear difference, 11 find Japanese more individualist"></div>
+              <div class="sbar-lab" id="tkLab"></div>
+              <ul class="tight" style="margin-top:6px;font-size:14px">
+                <li>Americans were <b>not less collectivist</b> than Japanese or Koreans (Oyserman 2002 meta-analysis).</li>
+                <li>Individualism rose <b>~12% worldwide</b>, 1960–2011, in 78 countries (Santos 2017).</li>
+              </ul>
+            </div>
+          </div>
+          <div class="verdict-line"><b>Verdict:</b> clear on thinking style (holistic vs analytic); weak on stated values; shrinking over time.</div>
+        </div>
+      </div>
+
+      <div class="step" id="roots-s2">
+        <div class="step-n">2</div>
+        <div class="step-body">
+          <h3>Your three theories, tested</h3>
+          <div class="tabs" id="thTabs" aria-label="Theories"></div>
+          <div class="card th" id="thPanel" aria-live="polite">
+            <div class="flowx" id="thFlow"></div>
+            <div class="th-row">
+              <div class="th-stat"><span class="big" id="thBig"></span><span class="note" id="thBigNote"></span></div>
+              <div class="th-meter"><div class="kicker">Evidence</div><div class="m3" id="thMeter"></div><b id="thStrength"></b></div>
+            </div>
+            <div class="th-crit"><b>Critics:</b> <span id="thCrit"></span></div>
+            <p class="note" id="thSrc"></p>
+          </div>
+          <div class="kicker" style="margin-top:6px">Other theories</div>
+          <div class="others" id="thOthers"></div>
+        </div>
+      </div>
+
+      <div class="step" id="roots-s3">
+        <div class="step-n">3</div>
+        <div class="step-body">
+          <h3>Philosophical roots</h3>
+          <div class="legend"><span><i class="tg I">I</i>Individual</span><span><i class="tg R">R</i>Relational</span><span><i class="tg M">M</i>Mixed</span><span class="note">Hover a name</span></div>
+          <div class="lanes">
+            <div><div class="lane-h w">West</div><ol class="lane" id="laneW"></ol></div>
+            <div><div class="lane-h a">East & South Asia</div><ol class="lane" id="laneE"></ol></div>
+          </div>
+          <div class="verdict-line">Both sides hold both: Aristotle and care ethics are relational; Wang Yangming and Yang Zhu put weight on the individual.</div>
+          <div class="kicker" style="margin-top:4px">Ideas crossed both ways</div>
+          <div class="cross" id="cross"></div>
+        </div>
+      </div>
+
+      <div class="step" id="roots-s4">
+        <div class="step-n">4</div>
+        <div class="step-body">
+          <h3>What the critics say</h3>
+          <div class="crit4">
+            <div><b>Averages aren't people</b><span>A country score says little about any one person (ecological fallacy).</span></div>
+            <div><b>Weak data base</b><span>Hofstede's scores come from IBM staff surveys, 1967–73 (McSweeney 2002).</span></div>
+            <div><b>The West is the odd one</b><span>Most psychology samples are Western and unusual, not the human norm (Henrich et al. 2010).</span></div>
+            <div><b>Blocks hide diversity</b><span>"East" was built as the West's Other (Said 1978); "Asian values" served rulers (Sen 1997).</span></div>
+          </div>
+          <div class="concl"><b>Bottom line</b>Land (rice vs wheat, frontiers) and history (family rules, wealth) explain part of the pattern. The evidence is mostly correlational and works best inside countries. Treat "individualist West, relational East" as a tendency on some measures, not a fixed essence.</div>
+        </div>
+      </div>
+    </div>
+
+    <details class="src" style="margin-top:28px">
+      <summary>Sources for Part 5</summary>
+      <ol>
+        <li>Hofstede dimension data, version 2015-12-08: <a href="https://geerthofstede.com/research-and-vsm/dimension-data-matrix/">geerthofstede.com</a> · McSweeney (2002), <i>Human Relations</i> 55(1): <a href="https://doi.org/10.1177/0018726702551004">doi</a></li>
+        <li>Takano &amp; Osaka (2018), <i>Asian J. Social Psychology</i>: <a href="https://doi.org/10.1111/ajsp.12322">doi</a> · Oyserman, Coon &amp; Kemmelmeier (2002), <i>Psych. Bulletin</i>: <a href="https://pubmed.ncbi.nlm.nih.gov/11843550">PubMed</a> · Santos, Varnum &amp; Grossmann (2017), <i>Psych. Science</i>: <a href="https://doi.org/10.1177/0956797617700622">doi</a></li>
+        <li>Climate: Van de Vliert et al. (2013), Chinese collectivism: <a href="https://research.utwente.nl/en/publications/climato-economic-imprints-on-chinese-collectivism/">record</a></li>
+        <li>Rice: Talhelm et al. (2014), <i>Science</i>: <a href="https://doi.org/10.1126/science.1246850">doi</a> · Talhelm et al. (2018), <i>Science Advances</i>: <a href="https://doi.org/10.1126/sciadv.aap8469">doi</a> · Talhelm &amp; Dong (2024), <i>Nature Comms</i>: <a href="https://doi.org/10.1038/s41467-024-44770-w">doi</a> · Critique: Ruan, Xie &amp; Zhang (2015), <i>Food Policy</i>: <a href="https://ideas.repec.org/a/eee/jfpoli/v56y2015icp51-58.html">record</a> · Herding vs farming: Uskul et al. (2008), <i>PNAS</i>: <a href="https://doi.org/10.1073/pnas.0803874105">doi</a></li>
+        <li>History: Schulz et al. (2019), <i>Science</i>: <a href="https://doi.org/10.1126/science.aau5141">doi</a> · Frontier: Bazzi, Fiszbein &amp; Gebresilasse (2020): <a href="https://www.nber.org/papers/w23997">NBER</a> · Pathogens: Fincher et al. (2008): <a href="https://doi.org/10.1098/rspb.2008.0094">doi</a>; critique Hruschka &amp; Henrich (2013): <a href="https://doi.org/10.1371/journal.pone.0063642">doi</a></li>
+        <li>Critics: Henrich, Heine &amp; Norenzayan (2010), <i>BBS</i>: <a href="https://doi.org/10.1017/S0140525X0999152X">doi</a> · Said, via <a href="https://plato.stanford.edu/entries/colonialism/">SEP: Colonialism §5</a> · Sen (1997): <a href="https://carnegiecouncil.org/publications/archive/morgenthau/254">lecture</a> · Kim Dae-jung (1994), "Is Culture Destiny?": <a href="https://www.foreignaffairs.com/responses/culture-destiny">Foreign Affairs</a></li>
+        <li>Philosophy (SEP / IEP / Britannica): <a href="https://plato.stanford.edu/entries/plato-ethics/">Plato</a> · <a href="https://plato.stanford.edu/entries/aristotle-politics/">Aristotle</a> · <a href="https://plato.stanford.edu/entries/stoicism/">Stoicism</a> · <a href="https://www.britannica.com/topic/Roman-law">Roman law</a> · <a href="https://plato.stanford.edu/entries/augustine/">Augustine</a> · <a href="https://plato.stanford.edu/entries/luther/">Luther</a> · <a href="https://plato.stanford.edu/entries/locke-political/">Locke</a> · <a href="https://plato.stanford.edu/entries/kant-moral/">Kant</a> · <a href="https://plato.stanford.edu/entries/mill-moral-political/">Mill</a> · <a href="https://plato.stanford.edu/entries/rawls/">Rawls</a> · <a href="https://plato.stanford.edu/entries/communitarianism/">Communitarianism</a> · <a href="https://iep.utm.edu/care-ethics/">Care ethics</a> · <a href="https://plato.stanford.edu/entries/confucius/">Confucius</a> · <a href="https://plato.stanford.edu/entries/daoism/">Daoism</a> · <a href="https://plato.stanford.edu/entries/mind-indian-buddhism/">Buddhism</a> · <a href="https://iep.utm.edu/bhagavad/">Bhagavad Gita</a> · <a href="https://plato.stanford.edu/entries/chinese-legalism/">Legalism</a> · <a href="https://www.britannica.com/topic/Shinto">Shinto</a> · <a href="https://plato.stanford.edu/entries/zhu-xi/">Zhu Xi</a> · <a href="https://plato.stanford.edu/entries/wang-yangming/">Wang Yangming</a> · <a href="https://iep.utm.edu/ind-chin/">Chinese individualism</a> · <a href="https://www.britannica.com/biography/Mahatma-Gandhi">Gandhi</a> · <a href="https://plato.stanford.edu/entries/watsuji-tetsuro/">Watsuji</a> · <a href="https://iep.utm.edu/zongsan/">New Confucians</a></li>
+        <li>Cross-influences: <a href="https://plato.stanford.edu/entries/wolff-christian/">Wolff</a> · <a href="https://plato.stanford.edu/entries/schopenhauer/">Schopenhauer</a> · <a href="https://plato.stanford.edu/entries/japanese-philosophy/">Japanese philosophy (Meiji)</a> · <a href="https://www.britannica.com/biography/B-R-Ambedkar">Ambedkar</a></li>
+      </ol>
+    </details>
   </section>
 
   <!-- PART 4: game -->
@@ -811,15 +958,14 @@ footer { padding-block: 32px 64px; border-top: 1px solid var(--line); }
     <div class="part-head"><div class="kicker">Reference</div><h2>Sources and readings</h2></div>
     <div class="src">
       <ol>
-        <li><a href="https://www.computing.co.uk/news/2026/ai/anthropic-unveils-project-glasswing-ai-cybersecurity">Computing: Anthropic unveils Project Glasswing</a></li>
+        <li><a href="https://www.anthropic.com/glasswing">Anthropic: Project Glasswing (official)</a></li>
         <li><a href="https://www.satellitetoday.com/cybersecurity/2026/04/12/anthropic-launches-project-glasswing-for-cybersecurity/">Via Satellite: Anthropic launches Project Glasswing</a></li>
         <li><a href="https://finance.yahoo.com/sectors/technology/articles/anthropic-expanding-project-glasswing-200-134409708.html">Yahoo Finance: Glasswing expanding to 200 partners</a></li>
         <li><a href="https://link.springer.com/article/10.1007/s11569-025-00472-1">NanoEthics (2025): non-Western perspectives on AI ethics</a></li>
-        <li><a href="https://engagemedia.org/?p=22981">EngageMedia: Alternative ethical frameworks for AI</a></li>
-        <li><a href="https://scholars.hkbu.edu.hk/en/publications/introduction-the-significance-of-east-west-dialogue-on-artificial/">HKBU: East–West dialogue on AI ethics</a></li>
-        <li><a href="https://www.wgbh.org/news/2018-02-16/what-can-ai-learn-from-non-western-philosophies">WGBH: What can AI learn from non-Western philosophies?</a></li>
+                <li><a href="https://scholars.hkbu.edu.hk/en/publications/introduction-the-significance-of-east-west-dialogue-on-artificial/">Checketts &amp; Chan (2025): East–West dialogue on AI</a></li>
+        <li><a href="https://www.wgbh.org/news/2018-02-16/what-can-ai-learn-from-non-western-philosophies">WGBH/PRI (2018, journalism): What can AI learn from non-Western philosophies?</a></li>
         <li>Confucius, <i>Analects</i> 13.23, 15.24 · Mencius 1B:8, 3A:4 · Laozi, <i>Daodejing</i> ch. 77 (trans. D.C. Lau) · Watsuji, <i>Rinrigaku</i> · Sen, <i>The Idea of Justice</i> (2009) · Rawls, <i>A Theory of Justice</i> (1971)</li>
-        <li><a href="https://www.centertao.org/essays/tao-te-ching/dc-lau/chapter-77-commentary/">Daodejing ch. 77, D.C. Lau translation and commentary</a></li>
+        <li>D.C. Lau (trans.), <i>Tao Te Ching</i> (Penguin, 1963), ch. 77 · <a href="https://www.centertao.org/essays/tao-te-ching/dc-lau/chapter-77-commentary/">online text with commentary</a></li>
         <li><a href="https://plato.stanford.edu/entries/watsuji-tetsuro/">Stanford Encyclopedia of Philosophy: Watsuji Tetsurō</a></li>
         <li><a href="https://mkgandhi-sarvodaya.org/gandhi's_talisman.htm">Gandhi's Talisman (1948)</a></li>
         <li>R. Ames, <i>Confucian Role Ethics: A Vocabulary</i> (2011) · Seventeen-Article Constitution (604)</li>
@@ -1068,36 +1214,36 @@ footer { padding-block: 32px 64px; border-top: 1px solid var(--line); }
       nb: ["AI Act in force since Aug 2024", "General-purpose AI duties (Aug 2025), transparency duties (Aug 2026)", "Fines up to €35M or 7% of turnover (Art. 99)", "European AI Office plus national authorities", "Art. 5 bans, e.g. social scoring, since Feb 2025"],
       nr: ["Only frontier-model evaluations apply now; high-risk checks delayed", "European AI Office", "Deepfake and AI-interaction disclosure (Art. 50) since Aug 2026", "Purpose is rights and safety (Art. 1)", "Only for frontier models now; high-risk reporting delayed"],
       src: [["Orrick: Digital Omnibus", "https://www.orrick.com/en/Insights/2026/07/EU-AI-Act-Update-Digital-Omnibus-Finalizes-8-Compliance-Changes"], ["AI Act Art. 1", "https://artificialintelligenceact.eu/article/1/"], ["AI Act Art. 99", "https://artificialintelligenceact.eu/article/99/"]] },
-    { n: "China", s: "asia", b: [0.5, 1, 1, 1, 1], r: [1, 0.5, 1, 0.5, 0.5], law: "Algorithm (2022), deep synthesis (2023), generative AI (2023) and labelling (2025) rules; AI article in Cybersecurity Law (2026)", val: "\"Equal emphasis on development and security\" (Generative AI Measures, Art. 3)",
-      nb: ["Binding regulations, but no single AI statute", "Algorithm filing, content rules, labelling", "Cybersecurity Law fines up to RMB 10M", "Cyberspace Administration of China (CAC) with other ministries", "Bans e.g. deepfake fake news, addictive feeds to minors"],
-      nr: ["Security assessment and filing before launch", "CnAISDA (2025): a coalition, not a state agency", "Visible and metadata labels since Sep 2025", "Security and stability, balanced with development", "General cyber-incident reporting (Nov 2025), not AI-specific"],
+    { n: "China", s: "asia", b: [0.5, 1, 1, 1, 1], r: [1, 0.5, 1, 0.5, 0.5], law: "Algorithm (2022), deep synthesis (2023), generative AI (2023) and labelling (2025) rules; AI-support article added to the Cybersecurity Law (2026)", val: "\"Equal emphasis on development and security\" (Generative AI Measures, Art. 3)",
+      nb: ["Binding regulations, but no single AI statute", "Algorithm filing, content rules, labelling", "Penalties under parent laws, e.g. the Cybersecurity Law", "Cyberspace Administration of China (CAC) with other ministries", "Bans e.g. deepfake fake news, addictive feeds to minors"],
+      nr: ["Security assessment and filing before launch", "CnAISDA (2025): a coalition with ambiguous government status", "Visible and metadata labels since Sep 2025", "Security and stability, balanced with development", "General cyber-incident reporting (Nov 2025), not AI-specific"],
       src: [["China Briefing: Cybersecurity Law", "https://www.china-briefing.com/news/china-cybersecurity-law-amendment/"], ["Loeb: labelling rules", "https://www.loeb.com/en/insights/publications/2025/03/chinas-ai-labeling-measures-and-mandatory-national-standards-take-effect-september-1"], ["Carnegie: CnAISDA", "https://carnegieendowment.org/research/2025/06/how-some-of-chinas-top-ai-thinkers-built-their-own-ai-safety-institute"]] },
     { n: "South Korea", s: "asia", b: [1, 1, 0.5, 1, 0], r: [0.5, 1, 1, 0.5, 0.5], law: "AI Basic Act, in force 22 Jan 2026", val: "Trust and people's rights, balanced with industry and competitiveness",
       nb: ["AI Basic Act, in force Jan 2026", "Duties for high-impact and generative AI", "Max KRW 30M; fines deferred to at least Jan 2027", "Ministry of Science and ICT (MSIT)", "No banned uses"],
       nr: ["Must check if AI is high-impact; impact assessment is best-effort", "Korea AI Safety Institute (Nov 2024)", "Generative AI output must be labelled", "Rights and dignity alongside competitiveness", "Only for very large models, reported to MSIT"],
-      src: [["Cooley: AI Basic Act", "https://www.cooley.com/news/insight/2026/2026-01-27-south-koreas-ai-basic-act-overview-and-key-takeaways"], ["US ITA: AI Basic Act", "https://www.trade.gov/market-intelligence/south-korea-ai-basic-act"], ["Stimson", "https://www.stimson.org/2026/south-koreas-ai-basic-act-seeking-balance-between-industry-innovation-and-social-risk/"]] },
+      src: [["Cooley: AI Basic Act", "https://www.cooley.com/news/insight/2026/2026-01-27-south-koreas-ai-basic-act-overview-and-key-takeaways"], ["US ITA: AI Basic Act", "https://www.trade.gov/market-intelligence/south-korea-ai-basic-act"], ["Cooley: grace period and fines", "https://www.cooley.com/news/insight/2026/2026-01-27-south-koreas-ai-basic-act-overview-and-key-takeaways"]] },
     { n: "USA", s: "west", b: [0.5, 0.5, 0.5, 0.5, 0.5], r: [0.5, 1, 0.5, 0, 0.5], law: "No federal AI law; TAKE IT DOWN Act (2025); California SB 53 and SB 942", val: "Innovation and \"winning the AI race\" (AI Action Plan, 2025)",
       nb: ["State laws only (California SB 53, SB 942)", "SB 53 safety frameworks; SB 942 disclosures", "SB 53 up to $1M per violation", "State attorneys general; FTC for TAKE IT DOWN only", "Federal crime to publish non-consensual AI intimate images"],
       nr: ["SB 53 frontier safety frameworks (state)", "Center for AI Standards and Innovation (NIST)", "California SB 942 since Aug 2026 (state)", "Federal goal is AI leadership", "SB 53 critical-incident reports to California (state)"],
       src: [["FTC: TAKE IT DOWN", "https://www.ftc.gov/news-events/news/press-releases/2026/05/ftc-begins-enforcing-take-it-down-act"], ["SB 53 incident reporting", "https://casrai.org/guides/sb-53-critical-safety-incident-reporting"], ["White House AI Action Plan", "https://www.whitehouse.gov/articles/2025/07/white-house-unveils-americas-ai-action-plan/"]] },
     { n: "India", s: "asia", b: [0.5, 1, 0.5, 0.5, 0], r: [0, 1, 1, 0, 0], law: "IT Rules amendment on synthetic content (in force Feb 2026); AI Governance Guidelines (Nov 2025)", val: "\"Safe and trusted AI innovation\"; innovation over restraint",
       nb: ["AI rules under the IT Act, no AI Act", "Platforms must label synthetic content", "Loss of legal safe harbour, no AI fine schedule", "MeitY enforces the IT Rules", "No banned uses"],
-      nr: ["Voluntary only", "IndiaAI Safety Institute (2025)", "Synthetic audio, images and video must be labelled", "Guidelines favour innovation", "No AI incident duty"],
-      src: [["Hogan Lovells: IT Rules 2026", "https://www.hoganlovells.com/en/publications/india-introduces-mandatory-labelling-for-ai-and-3hour-takedown-for-illegal-content"], ["IndiaAI Safety Institute", "https://indiaai.gov.in/article/india-takes-the-lead-establishing-the-indiaai-safety-institute-for-responsible-ai-innovation"], ["Mondaq: Guidelines", "https://www.mondaq.com/india/new-technology/1710654/india-artificial-intelligence-governance-guidelines"]] },
+      nr: ["Voluntary only", "IndiaAI Safety Institute (announced Jan 2025)", "Synthetic audio, images and video must be labelled", "Guidelines favour innovation", "No AI incident duty"],
+      src: [["Hogan Lovells: IT Rules 2026", "https://www.hlc.com/en/publications/india-introduces-mandatory-labelling-for-ai-and-3hour-takedown-for-illegal-content"], ["IndiaAI Safety Institute (govt PDF)", "https://psa.gov.in/CMS/web/sites/default/files/publication/India%20Takes%20the%20Lead%20Establishing%20the%20IndiaAI%20Safety%20Institute%20for%20Responsible%20AI%20Innovation.pdf"], ["Mondaq: Guidelines", "https://www.mondaq.com/india/new-technology/1710654/india-artificial-intelligence-governance-guidelines"]] },
     { n: "Singapore", s: "asia", b: [0.5, 0.5, 0.5, 0.5, 0.5], r: [0, 1, 0, 0, 0], law: "Voluntary frameworks and AI Verify; election deepfake ban (2024); Online Safety Act (2025)", val: "Trusted AI \"for the Public Good\", supporting innovation",
       nb: ["Narrow laws only (election deepfakes, online safety)", "Content orders on platforms, not AI-specific", "Offence to publish candidate deepfakes", "Online Safety Commission (Jun 2026)", "Candidate deepfakes banned during elections"],
       nr: ["AI Verify testing is voluntary", "Digital Trust Centre as AI Safety Institute", "No labelling law", "Pro-innovation, voluntary", "No AI incident duty"],
-      src: [["HSF Kramer AI tracker", "https://www.hsfkramer.com/insights/reports/ai-tracker/singapore"], ["MDDI: election deepfakes", "https://www.mddi.gov.sg/newsroom/new-legal-measures-uphold-integrity-online-advertising-elections/"], ["Online Safety Commission", "https://www.mlaw.gov.sg/the-online-safety-commission-begins-operations-on-29-june-2026/"]] },
-    { n: "Canada", s: "west", b: [0.5, 0, 0, 0, 0], r: [0.5, 1, 0, 0, 0], law: "AIDA died Jan 2025; Directive on Automated Decision-Making (government only); Bills C-34, C-36 pending", val: "\"AI for All\" (2026): growth and adoption first",
+      src: [["Mayer Brown: no AI-specific law (2026)", "https://www.mayerbrown.com/zh-hans/insights/publications/2026/04/singapores-agentic-ai-framework-practical-guidance-for-market-entry"], ["Rajah & Tann: election deepfake law passed Oct 2024", "https://www.rajahtannasia.com/viewpoints/new-measures-against-digitally-manipulated-content-and-deepfakes-during-elections/"], ["Online Safety Commission", "https://www.mlaw.gov.sg/the-online-safety-commission-begins-operations-on-29-june-2026/"]] },
+    { n: "Canada", s: "west", b: [0.5, 0, 0, 0, 0], r: [0.5, 1, 0, 0, 0], law: "AIDA died Jan 2025; Directive on Automated Decision-Making (government only)", val: "\"AI for All\" (2026): growth and adoption first",
       nb: ["Only a directive for federal government AI", "No binding federal duties on companies", "", "", ""],
       nr: ["Impact assessments for federal government AI only", "Canadian AI Safety Institute (2024)", "", "Strategy leads with growth", ""],
-      src: [["Canada: ADM Directive", "https://www.canada.ca/en/government/system/digital-government/policies-standards/policy-service-digital-announcements/amendments-directive-automated-decision-making.html"], ["Canadian AI Safety Institute", "https://ised-isde.canada.ca/site/ised/canadian-artificial-intelligence-safety-institute"], ["Torys: Bill C-34", "https://www.torys.com/our-latest-thinking/publications/2026/06/bill-c-34"]] },
+      src: [["Canada: ADM Directive", "https://www.canada.ca/en/government/system/digital-government/policies-standards/policy-service-digital-announcements/amendments-directive-automated-decision-making.html"], ["Canada: AI Safety Institute launched (Nov 2024)", "https://www.canada.ca/en/innovation-science-economic-development/news/2024/11/canada-launches-canadian-artificial-intelligence-safety-institute.html"], ["DLA Piper: AIDA died (Jan 2025)", "https://www.dlapiper.com/insights/publications/2025/01/canadian-privacy-and-ai-horizon-shifts-again"]] },
     { n: "Japan", s: "asia", b: [1, 0, 0, 0, 0], r: [0, 1, 0, 0, 0], law: "AI Promotion Act (2025); AI Basic Plan (Dec 2025); voluntary guidelines", val: "Make Japan \"the most AI-friendly country\"",
       nb: ["AI Promotion Act (2025)", "Companies only asked to cooperate (Art. 7)", "No penalties", "Government can investigate and advise, not order or fine", ""],
       nr: ["", "Japan AI Safety Institute (Feb 2024)", "", "Purpose: promote AI and the economy (Art. 1)", ""],
-      src: [["AI Promotion Act (official translation)", "https://www.japaneselawtranslation.go.jp/en/laws/view/5066/en"], ["White & Case", "https://www.whitecase.com/insight-alert/japans-first-ai-legislation-becomes-law-focus-promoting-research-and-development-no"], ["J-AISI", "https://aisi.go.jp/assets/pdf/20250808_AISI_en.pdf"]] },
-    { n: "UK", s: "west", b: [0, 0, 0, 0, 0.5], r: [0, 1, 0, 0, 0], law: "No AI law; existing regulators; AI CSAM-tool offences passed (2026), not yet in force", val: "Growth and innovation (AI Opportunities Action Plan, 2025)",
-      nb: ["No AI-specific act", "Only general law (UK GDPR, Online Safety Act)", "", "No AI regulator", "AI CSAM-generator offences passed, not yet in force"],
+      src: [["AI Promotion Act (official translation)", "https://www.japaneselawtranslation.go.jp/en/laws/view/5066/en"], ["J-AISI", "https://aisi.go.jp/assets/pdf/20250808_AISI_en.pdf"]] },
+    { n: "UK", s: "west", b: [0, 0, 0, 0, 0.5], r: [0, 1, 0, 0, 0], law: "No AI law; existing regulators; child-abuse image-generator offence passed (2026), not yet in force", val: "Growth and innovation (AI Opportunities Action Plan, 2025)",
+      nb: ["No AI-specific act", "Only general law (UK GDPR, Online Safety Act)", "", "No AI regulator", "Child-abuse image-generator offence passed (2026), not yet in force"],
       nr: ["Model testing is voluntary", "AI Security Institute (renamed 2025)", "", "Growth framing", ""],
       src: [["IAPP: King's Speech 2026", "https://iapp.org/news/a/king-s-speech-signals-diffuse-uk-digital-policy-agenda-but-no-ai-bill"], ["Crime and Policing Act 2026 s.72", "https://www.legislation.gov.uk/ukpga/2026/20/section/72"], ["AI Opportunities Action Plan", "https://www.gov.uk/government/publications/ai-opportunities-action-plan"]] }
   ];
@@ -1295,7 +1441,7 @@ footer { padding-block: 32px 64px; border-top: 1px solid var(--line); }
     { id: "c2", n: "What \"fair\" means", w: "Equal treatment, same rules", e: "Fitting treatment that keeps relations in balance", src: "SEP: Justice; SEP: Chinese Ethics", cue: "cue: equal treatment, same rules, no distinction or discrimination = west; balance, harmony, fitting or proportionate treatment = east; equity / giving more to those who need it appears in both traditions (Aristotle, Confucian fitting treatment) = both" },
     { id: "c3", n: "Where duties come from", w: "Rights, contract, reason", e: "Roles, virtue, interdependence", src: "Ames & Rosemont; SEP: Chinese Ethics", cue: "cue: rights, consent, contract, reason = west; roles, virtue, relational duties, interdependence = east" },
     { id: "c4", n: "Who counts", w: "Humans first", e: "All living beings and nature (Buddhist, Jain)", src: "SEP: Moral Status of Animals; SEP: Buddhist Ethics", cue: "cue: only persons or people = west; all beings, animals, nature, living systems = east" },
-    { id: "c5", n: "After a wrong", w: "Judge, compensate, punish", e: "Apology, mediation, repair", src: "Haley on apology in Japanese justice", cue: "cue: punish, penalise, compensate = west; restore, repair, acknowledge, reconcile, apologise = east; redress plus acknowledgement = east; only if the text says what happens after a wrong" },
+    { id: "c5", n: "After a wrong", w: "Judge, compensate, punish", e: "Apology, mediation, repair", src: "Haley: apology and pardon in Japan", cue: "cue: punish, penalise, compensate = west; restore, repair, acknowledge, reconcile, apologise = east; redress plus acknowledgement = east; only if the text says what happens after a wrong" },
     { id: "c6", n: "How fairness is tested", w: "One universal rule, applied impartially (Kant, Rawls)", e: "Judgement fitted to role and context (Confucian yi)", src: "SEP: Kant's Moral Philosophy; SEP: Chinese Ethics", cue: "cue: one rule or test applied the same way to everyone (impartial, universal) = west; case-by-case judgement by role or context = east" },
     { id: "c7", n: "Shared: reciprocity", w: "Golden Rule", e: "Confucian shu (Analects 15.24)", src: "Analects 15.24", shared: true, cue: "cue: yes if it asks what you would accept for yourself, or what others could do in return" },
     { id: "c8", n: "Shared: weakest first", w: "Rawls's difference principle", e: "Gandhi's talisman (1948)", src: "SEP: Rawls; Gandhi's Talisman", shared: true, cue: "cue: yes if it gives special protection or more help to the weakest, poorest, disadvantaged or those who cannot defend themselves" }
@@ -1584,11 +1730,70 @@ footer { padding-block: 32px 64px; border-top: 1px solid var(--line); }
   $("openWhy").onclick = function () { if (whyDlg.showModal) whyDlg.showModal(); else whyDlg.setAttribute("open", ""); };
   document.querySelectorAll("[data-close]").forEach(function (b) { b.onclick = function () { $(b.dataset.close).close(); }; });
   whyDlg.addEventListener("click", function (e) { if (e.target === whyDlg) whyDlg.close(); });
+  /* ---------- Part 5: roots ---------- */
+  (function () {
+    // Hofstede individualism (dataset 2015-12-08)
+    var IDV = [["USA", 91, "w"], ["UK", 89, "w"], ["France", 71, "w"], ["Germany", 67, "w"], ["India", 48, "a"], ["Japan", 46, "a"], ["China", 20, "a"], ["South Korea", 18, "a"]];
+    var hb = $("idvBars");
+    IDV.forEach(function (r) {
+      var row = document.createElement("div"); row.className = "hb";
+      var l = document.createElement("span"); l.textContent = r[0];
+      var t = document.createElement("div"); t.className = "hb-t"; var f = document.createElement("div"); f.style.width = r[1] + "%"; f.style.background = r[2] === "w" ? "var(--west)" : "var(--asia)"; t.appendChild(f);
+      var v = document.createElement("b"); v.textContent = r[1];
+      row.append(l, t, v); hb.appendChild(row);
+    });
+    var TK = [["Support the stereotype", 5, "var(--asia)"], ["No clear difference", 19, "var(--lilac)"], ["Japan more individualist", 11, "var(--west)"]];
+    TK.forEach(function (x) {
+      var d = document.createElement("div"); d.style.width = (x[1] / 35 * 100) + "%"; d.style.background = x[2]; $("tkBar").appendChild(d);
+      bindTip(d, function () { return [x[0], x[1] + " of 35 studies"]; });
+      var sp = document.createElement("span"); var i = document.createElement("i"); i.style.background = x[2]; sp.append(i, document.createTextNode(x[0] + " · " + x[1])); $("tkLab").appendChild(sp);
+    });
+
+    var TH = [
+      { n: "Temperature", c: "Harsh cold or heat", m: "In poor places, survival needs the group", o: "Collectivism (wealth weakens it)", big: "15 provinces", bn: "In China, collectivism was strongest in poor, harsh-climate provinces (Van de Vliert 2013).", s: 1, sl: "Weak", cr: "China's colder north is less collectivist than its warm south. Climate is tangled with crops, disease and wealth.", src: "Van de Vliert et al. 2013; Talhelm et al. 2014 (rice–wheat border shows the same gap at similar temperature)." },
+      { n: "Land shape", c: "Paddy rice vs wheat", m: "Rice needs shared irrigation and swapped labour", o: "Interdependent habits", big: "16% vs 6%", bn: "Wheat-region café customers moved a blocking chair; rice-region ones squeezed past (Talhelm 2018). A 2024 study of 234 farmers assigned to rice or wheat found rice farmers more holistic and more loyal.", s: 2, sl: "Moderate", cr: "A reanalysis found sample and model problems (Ruan et al. 2015). Works inside China; cannot explain Japan or Korea vs the US.", src: "Talhelm et al. 2014, 2018; Talhelm & Dong 2024; herders vs farmers in Turkey: Uskul et al. 2008." },
+      { n: "History", c: "Western Church bans cousin marriage (from c. 500 CE)", m: "Clans break into nuclear families", o: "Individualism, trust in strangers", big: "ρ = 0.63", bn: "Longer Church exposure goes with more individualist psychology across 440 European regions (Schulz et al. 2019).", s: 2, sl: "Moderate", cr: "Correlational; Church rules may not have been enforced. Explains why the West is unusual, not why the East is relational.", src: "Schulz et al. 2019; Henrich 2020." }
+    ];
+    var OTH = [["Wealth and development", "Strong", "Richer, more educated societies grow more individualist (Santos 2017)."], ["Frontier settlement", "Moderate–strong", "US frontier counties and Hokkaido settlers are more independent (Bazzi 2020; Kitayama 2006)."], ["Pathogens", "Contested", "Disease-heavy regions more collectivist (Fincher 2008), but government quality explains it better (Hruschka & Henrich 2013)."]];
+    var tabs = $("thTabs");
+    function setTh(i) {
+      var t = TH[i];
+      tabs.querySelectorAll("button").forEach(function (b, j) { b.setAttribute("aria-pressed", j === i ? "true" : "false"); });
+      var fl = $("thFlow"); fl.textContent = "";
+      [["Cause", t.c], ["Mechanism", t.m], ["Outcome", t.o]].forEach(function (x, k) {
+        if (k) { var a = document.createElement("span"); a.className = "ar"; a.textContent = "→"; a.setAttribute("aria-hidden", "true"); fl.appendChild(a); }
+        var d = document.createElement("div"); var s = document.createElement("small"); s.textContent = x[0]; var b = document.createElement("b"); b.textContent = x[1]; d.append(s, b); fl.appendChild(d);
+      });
+      $("thBig").textContent = t.big; $("thBigNote").textContent = t.bn;
+      var m = $("thMeter"); m.textContent = ""; for (var k = 1; k <= 3; k++) { var seg = document.createElement("i"); if (k <= t.s) seg.className = "on"; m.appendChild(seg); }
+      $("thStrength").textContent = t.sl; $("thCrit").textContent = t.cr; $("thSrc").textContent = "Sources: " + t.src;
+    }
+    TH.forEach(function (t, i) { var b = document.createElement("button"); b.type = "button"; b.className = "chip"; b.textContent = t.n; b.onclick = function () { setTh(i); }; tabs.appendChild(b); });
+    setTh(1);
+    OTH.forEach(function (o) { var d = document.createElement("div"); var b = document.createElement("b"); b.textContent = o[0]; var p = document.createElement("span"); p.className = "pill2"; p.textContent = o[1]; var s = document.createElement("span"); s.textContent = o[2]; d.append(b, p, s); $("thOthers").appendChild(d); });
+
+    var W = [["Plato", "5th–4th c. BCE", "M", "Care of the soul; justice is each part doing its own work"], ["Aristotle", "4th c. BCE", "R", "Humans are political animals; the city comes first"], ["Stoics", "c. 300 BCE", "M", "One reason and natural law shared by all humans"], ["Roman law", "c. 450 BCE–534 CE", "I", "A legal person who holds rights and property"], ["Christianity", "1st c. CE on", "I", "Each soul equal before God, individually accountable"], ["Reformation", "1517", "I", "Faith and individual conscience"], ["Locke", "1689", "I", "Natural rights; government by consent"], ["Kant", "1785", "I", "Autonomy; persons as ends, with dignity"], ["Mill", "1859", "I", "Harm principle; individuality"], ["Rawls", "1971", "I", "Justice as fairness; veil of ignorance"], ["Communitarians, care ethics", "1980s", "R", "The self is formed by community and care"]];
+    var E = [["Vedas, Bhagavad Gita", "c. 1500 BCE on", "M", "Duty (dharma) by one's station; act without clinging to results"], ["Buddha", "c. 5th c. BCE", "R", "No-self; everything arises together"], ["Confucius, Mencius", "551 BCE on", "R", "Humaneness through roles, ritual and family"], ["Laozi, Zhuangzi", "c. 4th c. BCE", "M", "Spontaneity and harmony with nature"], ["Legalism", "4th–3rd c. BCE", "M", "One public law for all, serving the state"], ["Shinto", "ancient; Kojiki 712", "R", "Kami in nature; community and ritual"], ["Zhu Xi", "1130–1200", "R", "Self-cultivation within a moral order"], ["Wang Yangming", "1472–1529", "I", "Moral knowing lives in each person's own mind"], ["Gandhi", "1909", "M", "Self-rule (swaraj); duties before rights"], ["Watsuji", "1937", "R", "A person exists in 'betweenness'"], ["New Confucians", "1958", "M", "Confucian roots for democracy and science"]];
+    function lane(id, list) {
+      var ol = $(id);
+      list.forEach(function (x) {
+        var li = document.createElement("li"); li.tabIndex = 0;
+        var tg = document.createElement("i"); tg.className = "tg " + x[2]; tg.textContent = x[2];
+        var b = document.createElement("b"); b.textContent = x[0]; var s = document.createElement("small"); s.textContent = x[1];
+        li.append(tg, b, s); ol.appendChild(li);
+        bindTip(li, function () { return [x[0] + " · " + x[1], x[3]]; });
+      });
+    }
+    lane("laneW", W); lane("laneE", E);
+    var CX = [["E→W", "Confucius → Leibniz, Wolff, Voltaire", "1687–1721"], ["E→W", "Upanishads, Buddhism → Schopenhauer", "1818"], ["W→E", "Western rights → Meiji Constitution", "1889"], ["W→E", "May Fourth: democracy and science", "China 1919"], ["W→E", "Rights in India's Constitution (Ambedkar)", "1950"], ["↔", "Thoreau, Tolstoy, Ruskin → Gandhi → Martin Luther King Jr.", "1900s–1950s"]];
+    CX.forEach(function (x) { var d = document.createElement("div"); var a = document.createElement("span"); a.className = "dir"; a.textContent = x[0]; var b = document.createElement("b"); b.textContent = x[1]; var s = document.createElement("small"); s.textContent = x[2]; d.append(a, b, s); $("cross").appendChild(d); });
+  })();
+
   /* ---------- navigation: one part per view ---------- */
-  var VIEWS = ["home", "course", "asia", "gov", "vs", "game", "sources"];
-  var ORDER = ["home", "course", "asia", "gov", "vs", "game"];
-  var TITLE = { home: "Start here", course: "1 · The course", asia: "2 · Fairness in Asian thought", gov: "3 · AI safety, East & West", vs: "4 · Same meaning?", game: "Fun activity · Fairness Compass" };
-  var SUB = { "course-lenses": "course", "course-why": "course", "course-system": "course", "asia-s1": "asia", "asia-s2": "asia", "asia-s3": "asia", "gov-map": "gov", "gov-check": "gov", "keys": "gov" };
+  var VIEWS = ["home", "course", "asia", "gov", "vs", "roots", "game", "sources"];
+  var ORDER = ["home", "course", "asia", "gov", "vs", "roots", "game"];
+  var TITLE = { home: "Start here", course: "1 · The course", asia: "2 · Fairness in Asian thought", gov: "3 · AI safety, East & West", vs: "4 · Same meaning?", roots: "5 · Why individual vs relational?", game: "Fun activity · Fairness Compass" };
+  var SUB = { "course-lenses": "course", "course-why": "course", "course-system": "course", "asia-s1": "asia", "asia-s2": "asia", "asia-s3": "asia", "gov-map": "gov", "gov-check": "gov", "keys": "gov", "roots-s1": "roots", "roots-s2": "roots", "roots-s3": "roots", "roots-s4": "roots" };
   ORDER.forEach(function (v, i) {
     var pg = document.createElement("nav"); pg.className = "pager"; pg.setAttribute("aria-label", "Previous and next");
     function link(to, cls, label) { var a = document.createElement("a"); a.href = "#" + to; a.className = cls; var sm = document.createElement("small"); sm.textContent = label; var b = document.createElement("b"); b.textContent = TITLE[to]; a.append(sm, b); pg.appendChild(a); }
