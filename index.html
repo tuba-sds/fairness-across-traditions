@@ -418,7 +418,7 @@ table.score button { background: none; border: 0; padding: 0; font-weight: 700; 
 .m3 i { flex: 1; height: 10px; border-radius: 999px; background: var(--soft); }
 .m3 i.on { background: var(--head); }
 .th-crit { font-size: 14px; background: var(--c2); border-radius: 10px; padding: 10px 12px; }
-.others { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 10px; }
+.others { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px; }
 @media (max-width: 700px) { .others { grid-template-columns: minmax(0,1fr); } }
 .others > div { display: grid; gap: 4px; align-content: start; background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 12px; font-size: 13.5px; }
 .others b { font-family: var(--display); font-size: 14.5px; }
@@ -444,6 +444,12 @@ table.score button { background: none; border: 0; padding: 0; font-weight: 700; 
 .concl { display: grid; gap: 4px; background: var(--c1); border-radius: 14px; padding: 14px 16px; font-size: 14.5px; }
 .concl b { font-family: var(--display); font-size: 1.05rem; }
 #roots-s1, #roots-s2, #roots-s3, #roots-s4 { scroll-margin-top: 80px; }
+details.crit-d > summary { cursor: pointer; list-style: none; display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; }
+details.crit-d > summary::-webkit-details-marker { display: none; }
+details.crit-d > summary h3 { display: inline; }
+details.crit-d > summary::before { content: "▸"; color: var(--muted); }
+details.crit-d[open] > summary::before { content: "▾"; }
+details.crit-d[open] > summary .note { display: none; }
 
 .tg-card { display: grid; grid-template-columns: 220px minmax(0,1fr); gap: 16px; align-items: center; background: var(--soft); border-radius: 14px; padding: 14px 16px; }
 .tg-card svg { width: 100%; height: auto; }
@@ -846,7 +852,7 @@ footer { padding-block: 32px 64px; border-top: 1px solid var(--line); }
     <div class="part-head">
       <div class="kicker">Research 4 of 4 · Roots</div>
       <h2>Why is the West called individualist, and the East relational?</h2>
-      <p class="sub">Four steps: is the gap real, do your three theories hold, which philosophies shaped each side, and what the critics say.</p>
+      <p class="sub">Four steps: is the gap real, do my three theories hold, which philosophies shaped each side, and what the critics say.</p>
     </div>
     <div class="steps">
       <div class="step" id="roots-s1">
@@ -876,7 +882,7 @@ footer { padding-block: 32px 64px; border-top: 1px solid var(--line); }
       <div class="step" id="roots-s2">
         <div class="step-n">2</div>
         <div class="step-body">
-          <h3>Your three theories, tested</h3>
+          <h3>My three theories, tested</h3>
           <div class="tabs" id="thTabs" aria-label="Theories"></div>
           <div class="card th" id="thPanel" aria-live="polite">
             <div class="flowx" id="thFlow"></div>
@@ -902,21 +908,21 @@ footer { padding-block: 32px 64px; border-top: 1px solid var(--line); }
             <div><div class="lane-h a">East & South Asia</div><ol class="lane" id="laneE"></ol></div>
           </div>
           <div class="verdict-line">Both sides hold both: Aristotle and care ethics are relational; Wang Yangming and Yang Zhu put weight on the individual.</div>
-          <div class="kicker" style="margin-top:4px">Ideas crossed both ways</div>
-          <div class="cross" id="cross"></div>
         </div>
       </div>
 
       <div class="step" id="roots-s4">
         <div class="step-n">4</div>
         <div class="step-body">
-          <h3>What the critics say</h3>
-          <div class="crit4">
+          <details class="crit-d">
+          <summary><h3>What the critics say</h3><span class="note">Show 4 critiques</span></summary>
+          <div class="crit4" style="margin-top:10px">
             <div><b>Averages aren't people</b><span>A country score says little about any one person (ecological fallacy).</span></div>
             <div><b>Weak data base</b><span>Hofstede's scores come from IBM staff surveys, 1967–73 (McSweeney 2002).</span></div>
             <div><b>The West is the odd one</b><span>Most psychology samples are Western and unusual, not the human norm (Henrich et al. 2010).</span></div>
             <div><b>Blocks hide diversity</b><span>"East" was built as the West's Other (Said 1978); "Asian values" served rulers (Sen 1997).</span></div>
           </div>
+          </details>
           <div class="concl"><b>Bottom line</b>Land (rice vs wheat, frontiers) and history (family rules, wealth) explain part of the pattern. The evidence is mostly correlational and works best inside countries. Treat "individualist West, relational East" as a tendency on some measures, not a fixed essence.</div>
         </div>
       </div>
@@ -927,12 +933,12 @@ footer { padding-block: 32px 64px; border-top: 1px solid var(--line); }
       <ol>
         <li>Hofstede dimension data, version 2015-12-08: <a href="https://geerthofstede.com/research-and-vsm/dimension-data-matrix/">geerthofstede.com</a> · McSweeney (2002), <i>Human Relations</i> 55(1): <a href="https://doi.org/10.1177/0018726702551004">doi</a></li>
         <li>Takano &amp; Osaka (2018), <i>Asian J. Social Psychology</i>: <a href="https://doi.org/10.1111/ajsp.12322">doi</a> · Oyserman, Coon &amp; Kemmelmeier (2002), <i>Psych. Bulletin</i>: <a href="https://pubmed.ncbi.nlm.nih.gov/11843550">PubMed</a> · Santos, Varnum &amp; Grossmann (2017), <i>Psych. Science</i>: <a href="https://doi.org/10.1177/0956797617700622">doi</a></li>
-        <li>Climate: Van de Vliert et al. (2013), Chinese collectivism: <a href="https://research.utwente.nl/en/publications/climato-economic-imprints-on-chinese-collectivism/">record</a></li>
+        <li>Climate: Van de Vliert &amp; Van Lange (2019), latitudinal psychology: <a href="https://research.vu.nl/ws/files/87106396/Latitudinal_Psychology.pdf">PDF</a> · Wei et al. (2017), <i>Nature Human Behaviour</i>: <a href="https://doi.org/10.1038/s41562-017-0240-0">doi</a> · Kashima &amp; Kashima (2003): <a href="https://findanexpert.unimelb.edu.au/scholarlywork/258780-individualism--gnp--climate--and-pronoun-drop--is-individualism-determined-by-affluence-and-climate--or-does-language-use-play-a-role%3F">record</a> · Van de Vliert et al. (2013), Chinese collectivism: <a href="https://research.utwente.nl/en/publications/climato-economic-imprints-on-chinese-collectivism/">record</a></li>
+        <li>Thinking styles: Nisbett, Peng, Choi &amp; Norenzayan (2001), <i>Psychological Review</i>: <a href="https://doi.org/10.1037/0033-295X.108.2.291">doi</a> · Nisbett, <i>The Geography of Thought</i> (2003)</li>
         <li>Rice: Talhelm et al. (2014), <i>Science</i>: <a href="https://doi.org/10.1126/science.1246850">doi</a> · Talhelm et al. (2018), <i>Science Advances</i>: <a href="https://doi.org/10.1126/sciadv.aap8469">doi</a> · Talhelm &amp; Dong (2024), <i>Nature Comms</i>: <a href="https://doi.org/10.1038/s41467-024-44770-w">doi</a> · Critique: Ruan, Xie &amp; Zhang (2015), <i>Food Policy</i>: <a href="https://ideas.repec.org/a/eee/jfpoli/v56y2015icp51-58.html">record</a> · Herding vs farming: Uskul et al. (2008), <i>PNAS</i>: <a href="https://doi.org/10.1073/pnas.0803874105">doi</a></li>
         <li>History: Schulz et al. (2019), <i>Science</i>: <a href="https://doi.org/10.1126/science.aau5141">doi</a> · Frontier: Bazzi, Fiszbein &amp; Gebresilasse (2020): <a href="https://www.nber.org/papers/w23997">NBER</a> · Pathogens: Fincher et al. (2008): <a href="https://doi.org/10.1098/rspb.2008.0094">doi</a>; critique Hruschka &amp; Henrich (2013): <a href="https://doi.org/10.1371/journal.pone.0063642">doi</a></li>
         <li>Critics: Henrich, Heine &amp; Norenzayan (2010), <i>BBS</i>: <a href="https://doi.org/10.1017/S0140525X0999152X">doi</a> · Said, via <a href="https://plato.stanford.edu/entries/colonialism/">SEP: Colonialism §5</a> · Sen (1997): <a href="https://carnegiecouncil.org/publications/archive/morgenthau/254">lecture</a> · Kim Dae-jung (1994), "Is Culture Destiny?": <a href="https://www.foreignaffairs.com/responses/culture-destiny">Foreign Affairs</a></li>
         <li>Philosophy (SEP / IEP / Britannica): <a href="https://plato.stanford.edu/entries/plato-ethics/">Plato</a> · <a href="https://plato.stanford.edu/entries/aristotle-politics/">Aristotle</a> · <a href="https://plato.stanford.edu/entries/stoicism/">Stoicism</a> · <a href="https://www.britannica.com/topic/Roman-law">Roman law</a> · <a href="https://plato.stanford.edu/entries/augustine/">Augustine</a> · <a href="https://plato.stanford.edu/entries/luther/">Luther</a> · <a href="https://plato.stanford.edu/entries/locke-political/">Locke</a> · <a href="https://plato.stanford.edu/entries/kant-moral/">Kant</a> · <a href="https://plato.stanford.edu/entries/mill-moral-political/">Mill</a> · <a href="https://plato.stanford.edu/entries/rawls/">Rawls</a> · <a href="https://plato.stanford.edu/entries/communitarianism/">Communitarianism</a> · <a href="https://iep.utm.edu/care-ethics/">Care ethics</a> · <a href="https://plato.stanford.edu/entries/confucius/">Confucius</a> · <a href="https://plato.stanford.edu/entries/daoism/">Daoism</a> · <a href="https://plato.stanford.edu/entries/mind-indian-buddhism/">Buddhism</a> · <a href="https://iep.utm.edu/bhagavad/">Bhagavad Gita</a> · <a href="https://plato.stanford.edu/entries/chinese-legalism/">Legalism</a> · <a href="https://www.britannica.com/topic/Shinto">Shinto</a> · <a href="https://plato.stanford.edu/entries/zhu-xi/">Zhu Xi</a> · <a href="https://plato.stanford.edu/entries/wang-yangming/">Wang Yangming</a> · <a href="https://iep.utm.edu/ind-chin/">Chinese individualism</a> · <a href="https://www.britannica.com/biography/Mahatma-Gandhi">Gandhi</a> · <a href="https://plato.stanford.edu/entries/watsuji-tetsuro/">Watsuji</a> · <a href="https://iep.utm.edu/zongsan/">New Confucians</a></li>
-        <li>Cross-influences: <a href="https://plato.stanford.edu/entries/wolff-christian/">Wolff</a> · <a href="https://plato.stanford.edu/entries/schopenhauer/">Schopenhauer</a> · <a href="https://plato.stanford.edu/entries/japanese-philosophy/">Japanese philosophy (Meiji)</a> · <a href="https://www.britannica.com/biography/B-R-Ambedkar">Ambedkar</a></li>
       </ol>
     </details>
   </section>
@@ -1784,11 +1790,11 @@ footer { padding-block: 32px 64px; border-top: 1px solid var(--line); }
     });
 
     var TH = [
-      { n: "Temperature", c: "Harsh cold or heat", m: "In poor places, survival needs the group", o: "Collectivism (wealth weakens it)", big: "15 provinces", bn: "In China, collectivism was strongest in poor, harsh-climate provinces (Van de Vliert 2013).", s: 1, sl: "Weak", cr: "China's colder north is less collectivist than its warm south. Climate is tangled with crops, disease and wealth.", src: "Van de Vliert et al. 2013; Talhelm et al. 2014 (rice–wheat border shows the same gap at similar temperature)." },
-      { n: "Land shape", c: "Paddy rice vs wheat", m: "Rice needs shared irrigation and swapped labour", o: "Interdependent habits", big: "16% vs 6%", bn: "Wheat-region café customers moved a blocking chair; rice-region ones squeezed past (Talhelm 2018). A 2024 study of 234 farmers assigned to rice or wheat found rice farmers more holistic and more loyal.", s: 2, sl: "Moderate", cr: "A reanalysis found sample and model problems (Ruan et al. 2015). Works inside China; cannot explain Japan or Korea vs the US.", src: "Talhelm et al. 2014, 2018; Talhelm & Dong 2024; herders vs farmers in Turkey: Uskul et al. 2008." },
-      { n: "History", c: "Western Church bans cousin marriage (from c. 500 CE)", m: "Clans break into nuclear families", o: "Individualism, trust in strangers", big: "ρ = 0.63", bn: "Longer Church exposure goes with more individualist psychology across 440 European regions (Schulz et al. 2019).", s: 2, sl: "Moderate", cr: "Correlational; Church rules may not have been enforced. Explains why the West is unusual, not why the East is relational.", src: "Schulz et al. 2019; Henrich 2020." }
+      { n: "Temperature", c: "Warm climate, food all year", m: "Life outdoors with neighbours (no AC); fruit and crops are easy to share", o: "Community-minded, relational", big: "Poles ↑ = individualism ↑", bn: "Individualism rises toward the cold poles (Van de Vliert & Van Lange 2019). People from places near 22°C are more agreeable and outgoing (Wei et al. 2017: 59 Chinese cities; 1.66M Americans).", s: 2, sl: "Pattern: moderate · mechanism: untested", cr: "Wealth also rises toward the poles, so the two are hard to separate. Japan and Korea are cool but relational. Van de Vliert argues harsh climates, hot or cold, push poor societies toward the group, a different mechanism.", src: "Van de Vliert & Van Lange 2019; Wei et al. 2017; Kashima & Kashima 2003." },
+      { n: "Land shape", c: "Peninsula or coast: food from sea and land", m: "Dense villages; fishing and farming done together", o: "Care for people around you", big: "18 vs 76", bn: "Peninsulas split on Hofstede individualism: South Korea 18, Malaysia 26, Portugal 27, Greece 35 vs Italy 76, Denmark 74, Norway 69. Coastal fishers and farmers think more holistically than herders (Uskul et al. 2008).", s: 1, sl: "Weak · mixed", cr: "Warm, poorer peninsulas score relational; cold, rich ones score individualist, so climate and wealth seem to matter more than shape. Greece's peninsulas are often called the cradle of Western individualism (Nisbett).", src: "Hofstede dataset 2015-12-08; Uskul, Kitayama & Nisbett 2008; Nisbett 2003." },
+      { n: "History", c: "Which philosophers came first", m: "Ideas shape family, law and schooling for centuries", o: "Individual vs relational self", big: "See step 3", bn: "East Asians tend to think more holistically and Westerners more analytically in lab tasks (Nisbett et al. 2001). Church family rules track individualism across 440 European regions (Schulz et al. 2019).", s: 2, sl: "Moderate", cr: "Ideas and material life shape each other, so cause is hard to prove. Each side also holds both strands (step 3).", src: "Nisbett et al. 2001; Schulz et al. 2019; philosophical roots in step 3." }
     ];
-    var OTH = [["Wealth and development", "Strong", "Richer, more educated societies grow more individualist (Santos 2017)."], ["Frontier settlement", "Moderate–strong", "US frontier counties and Hokkaido settlers are more independent (Bazzi 2020; Kitayama 2006)."], ["Pathogens", "Contested", "Disease-heavy regions more collectivist (Fincher 2008), but government quality explains it better (Hruschka & Henrich 2013)."]];
+    var OTH = [["Rice vs wheat farming", "Moderate", "Rice regions of China are more interdependent than wheat regions (Talhelm 2014, 2018, 2024)."], ["Wealth and development", "Strong", "Richer, more educated societies grow more individualist (Santos 2017)."], ["Frontier settlement", "Moderate–strong", "US frontier counties and Hokkaido settlers are more independent (Bazzi 2020; Kitayama 2006)."], ["Pathogens", "Contested", "Disease-heavy regions more collectivist (Fincher 2008), but government quality explains it better (Hruschka & Henrich 2013)."]];
     var tabs = $("thTabs");
     function setTh(i) {
       var t = TH[i];
@@ -1803,7 +1809,7 @@ footer { padding-block: 32px 64px; border-top: 1px solid var(--line); }
       $("thStrength").textContent = t.sl; $("thCrit").textContent = t.cr; $("thSrc").textContent = "Sources: " + t.src;
     }
     TH.forEach(function (t, i) { var b = document.createElement("button"); b.type = "button"; b.className = "chip"; b.textContent = t.n; b.onclick = function () { setTh(i); }; tabs.appendChild(b); });
-    setTh(1);
+    setTh(0);
     OTH.forEach(function (o) { var d = document.createElement("div"); var b = document.createElement("b"); b.textContent = o[0]; var p = document.createElement("span"); p.className = "pill2"; p.textContent = o[1]; var s = document.createElement("span"); s.textContent = o[2]; d.append(b, p, s); $("thOthers").appendChild(d); });
 
     var W = [["Plato", "5th–4th c. BCE", "M", "Care of the soul; justice is each part doing its own work"], ["Aristotle", "4th c. BCE", "R", "Humans are political animals; the city comes first"], ["Stoics", "c. 300 BCE", "M", "One reason and natural law shared by all humans"], ["Roman law", "c. 450 BCE–534 CE", "I", "A legal person who holds rights and property"], ["Christianity", "1st c. CE on", "I", "Each soul equal before God, individually accountable"], ["Reformation", "1517", "I", "Faith and individual conscience"], ["Locke", "1689", "I", "Natural rights; government by consent"], ["Kant", "1785", "I", "Autonomy; persons as ends, with dignity"], ["Mill", "1859", "I", "Harm principle; individuality"], ["Rawls", "1971", "I", "Justice as fairness; veil of ignorance"], ["Communitarians, care ethics", "1980s", "R", "The self is formed by community and care"]];
@@ -1819,8 +1825,6 @@ footer { padding-block: 32px 64px; border-top: 1px solid var(--line); }
       });
     }
     lane("laneW", W); lane("laneE", E);
-    var CX = [["E→W", "Confucius → Leibniz, Wolff, Voltaire", "1687–1721"], ["E→W", "Upanishads, Buddhism → Schopenhauer", "1818"], ["W→E", "Western rights → Meiji Constitution", "1889"], ["W→E", "May Fourth: democracy and science", "China 1919"], ["W→E", "Rights in India's Constitution (Ambedkar)", "1950"], ["↔", "Thoreau, Tolstoy, Ruskin → Gandhi → Martin Luther King Jr.", "1900s–1950s"]];
-    CX.forEach(function (x) { var d = document.createElement("div"); var a = document.createElement("span"); a.className = "dir"; a.textContent = x[0]; var b = document.createElement("b"); b.textContent = x[1]; var s = document.createElement("small"); s.textContent = x[2]; d.append(a, b, s); $("cross").appendChild(d); });
   })();
 
   /* ---------- navigation: one part per view ---------- */
