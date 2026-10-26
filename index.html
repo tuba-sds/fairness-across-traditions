@@ -100,6 +100,8 @@ section.part { padding-block: 56px; border-top: 1px solid var(--line); }
 .trad .term { display: grid; grid-template-columns: 112px minmax(0,1fr); gap: 10px; align-items: baseline; }
 .trad .term b { font-family: var(--display); font-size: 15px; }
 .trad .term span { color: var(--muted); font-size: 14.5px; }
+.trad .term b .kj { color: var(--ink); font-size: inherit; cursor: help; text-decoration: underline dotted var(--asia); text-underline-offset: 4px; }
+.trad .term b .kj:hover, .trad .term b .kj:focus-visible { background: var(--tag); border-radius: 3px; }
 .fair-box { background: var(--soft); border-radius: 12px; padding: 16px 18px; display: grid; gap: 6px; align-content: start; }
 .fair-box .where { font-size: 13px; color: var(--muted); }
 .fair-box .eq { font-family: var(--display); font-size: 1.15rem; line-height: 1.4; }
@@ -1147,6 +1149,25 @@ footer { padding-block: 32px 64px; border-top: 1px solid var(--line); }
   });
 
   /* ---------- traditions ---------- */
+  // Character meanings and parts (standard dictionary analyses, e.g. Shuowen Jiezi; "sound" = the part that gives the pronunciation)
+  var KANJI = {
+    "仁": ["humaneness, kindness", "亻 person + 二 two: virtue that exists between people."],
+    "礼": ["ritual, courtesy", "礻 altar + a ritual vessel (old form 禮 = 示 altar + 豊 vessel): proper conduct grew from offerings."],
+    "恕": ["consideration, forgiveness", "如 'like, as' (also the sound) + 心 heart: a heart that treats others like oneself."],
+    "和": ["harmony, peace", "口 mouth + 禾 grain (the sound): first meant voices answering in tune."],
+    "道": ["way, path", "辶 walking + 首 head: the road one walks; later the Way of things."],
+    "自": ["self", "Originally a drawing of a nose; people point to their nose to say 'me'."],
+    "然": ["so, thus", "Originally 'to burn': 肉 meat + 犬 dog + 灬 fire. Borrowed to mean 'so'."],
+    "無": ["without, none", "Early form showed a dancer; borrowed for its sound to mean 'not have'."],
+    "為": ["do, act", "Early form: a hand leading an elephant, meaning to do work."],
+    "德": ["virtue, moral power", "彳 step + 直 straight + 心 heart: walking with an upright heart."],
+    "經": ["classic, scripture", "糸 thread + 巠 warp threads: the loom's warp, so the core text."],
+    "間": ["between, space", "門 gate + 日 sun: sunlight seen through a gap in the gate."],
+    "柄": ["handle; pattern, character", "木 wood + 丙 (the sound): a wooden handle; 間柄 = relationship."],
+    "神": ["god, spirit (kami)", "礻 altar + 申 lightning (also the sound): the power one prays to."],
+    "調": ["tune, adjust", "言 words + 周 all around (the sound): bring words into tune."],
+    "停": ["stop, settle", "亻 person + 亭 rest-stop pavilion (the sound): a person halting."]
+  };
   var TRADS = [
     { id: "conf", name: "Confucian", where: "China · Korea · Japan · Vietnam · Singapore",
       eq: "Each relationship carries duties on both sides. A ruler who harms the people loses the right to rule.",
@@ -1174,7 +1195,17 @@ footer { padding-block: 32px 64px; border-top: 1px solid var(--line); }
     var t = TRADS[i];
     tradTabs.querySelectorAll("button").forEach(function (b, j) { b.setAttribute("aria-selected", j === i ? "true" : "false"); b.tabIndex = j === i ? 0 : -1; });
     var box = $("tradTerms"); box.textContent = "";
-    t.terms.forEach(function (p) { var d = document.createElement("div"); d.className = "term"; var b = document.createElement("b"); b.textContent = p[0]; var s = document.createElement("span"); s.textContent = p[1]; d.append(b, s); box.appendChild(d); });
+    t.terms.forEach(function (p) {
+      var d = document.createElement("div"); d.className = "term"; var b = document.createElement("b");
+      Array.from(p[0]).forEach(function (ch) {
+        var k = KANJI[ch];
+        if (!k) { b.appendChild(document.createTextNode(ch)); return; }
+        var sp = document.createElement("span"); sp.className = "kj"; sp.tabIndex = 0; sp.textContent = ch;
+        bindTip(sp, function () { return [ch + " · " + k[0], k[1]]; });
+        b.appendChild(sp);
+      });
+      var s = document.createElement("span"); s.textContent = p[1]; d.append(b, s); box.appendChild(d);
+    });
     $("tradEq").textContent = t.eq; $("tradWhere").textContent = t.where; $("tradSrc").textContent = "Sources: " + t.src;
   }
   TRADS.forEach(function (t, i) {
