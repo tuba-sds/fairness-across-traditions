@@ -458,6 +458,13 @@ details.crit-d[open] > summary .note { display: none; }
 .tg-card b { font-family: var(--display); }
 @media (max-width: 600px) { .tg-card { grid-template-columns: minmax(0,1fr); } .tg-card svg { max-width: 240px; } }
 
+/* AI policy */
+.aip { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 14px; }
+@media (max-width: 760px) { .aip { grid-template-columns: minmax(0,1fr); } }
+.aip-card { position: relative; display: grid; gap: 8px; align-content: start; background: var(--surface); border: 1px solid var(--lilac); border-radius: 16px; padding: 18px 18px 16px 60px; font-size: 14.5px; }
+.aip-n { position: absolute; left: 16px; top: 16px; width: 32px; height: 32px; border-radius: 50%; background: var(--lilac); display: grid; place-items: center; font-family: var(--display); font-weight: 700; }
+.aip-steps { margin: 0; padding-left: 1.1em; display: grid; gap: 4px; }
+
 #tip { position: fixed; z-index: 50; pointer-events: none; background: var(--surface); color: var(--ink); border: 1px solid var(--lilac); box-shadow: 0 6px 20px rgba(92, 17, 66, .12); font-size: 13px; line-height: 1.4; padding: 8px 10px; border-radius: 8px; max-width: 240px; }
 details.src { margin-top: 8px; }
 details.src summary { cursor: pointer; font-weight: 700; }
@@ -483,7 +490,7 @@ footer { padding-block: 32px 64px; border-top: 1px solid var(--line); }
       <a class="nv" href="#vs" data-v="vs"><span class="nv-n">3</span>Same meaning?</a>
       <a class="nv" href="#roots" data-v="roots"><span class="nv-n">4</span>Why individual vs relational?</a>
     </nav>
-    <div class="side-foot"><a href="#sources">Sources</a><p>First draft · Oct 2026</p></div>
+    <div class="side-foot"><a href="#aipolicy">AI policy</a><a href="#sources">Sources</a><p>First draft · Oct 2026</p></div>
   </aside>
   <div class="topbar">
     <a class="brand" href="#home"><svg width="28" height="28" viewBox="0 0 30 30" aria-hidden="true"><rect x="1" y="1" width="28" height="28" rx="6" fill="none" stroke="currentColor" stroke-width="1.5" opacity=".35"/><path d="M8 8H22M15 8V23" stroke="#D30000" stroke-width="3" stroke-linecap="round"/><path d="M1 15H29M15 1V29M1 1L29 29M29 1L1 29" stroke="currentColor" stroke-width=".75" opacity=".25"/></svg><span>Fairness Across Traditions</span></a>
@@ -990,6 +997,64 @@ footer { padding-block: 32px 64px; border-top: 1px solid var(--line); }
       <h3>Class board</h3>
       <p class="note" id="boardNote">Each dot is a classmate's definition. Hover a dot to see whose it is.</p>
       <svg id="board" viewBox="0 0 360 360" role="img" aria-label="Class board: each classmate's East and West scores"></svg>
+    </div>
+  </section>
+
+  <!-- AI POLICY -->
+  <section class="part vp" id="aipolicy" hidden>
+    <div class="part-head">
+      <div class="kicker">Course AI policy · disclosure</div>
+      <h2>How I used AI on this page</h2>
+      <p class="sub">The course encourages AI use if it is disclosed. Here are the four things the policy asks for.</p>
+    </div>
+    <div class="aip">
+      <div class="aip-card">
+        <span class="aip-n">1</span>
+        <h3>AI systems used</h3>
+        <ul class="tight">
+          <li><b>Claude Opus 5.5</b> (Anthropic), in the Claude Code desktop app: research, writing, and coding the page.</li>
+          <li><b>Claude sub-agents</b> (Opus 5.5, Sonnet 5.5): parallel web research, source checks, test runs of the scoring.</li>
+          <li><b>Tools Claude used:</b> web search, web page reading, a preview browser, GitHub (to publish this site).</li>
+          <li><b>Inside the page:</b> Fairness Compass asks Claude to sort a definition against a fixed rubric. The page, not the AI, computes the score. Works on claude.ai only.</li>
+        </ul>
+      </div>
+      <div class="aip-card">
+        <span class="aip-n">2</span>
+        <h3>Prompts (high level)</h3>
+        <ol class="aip-steps">
+          <li><b>Start:</b> collect class notes and my fairness definition; research fairness in the Asian context.</li>
+          <li><b>Design:</b> make it interactive with less text, in my brand colours; add a definition hover, charts, a country comparison and a scoring game.</li>
+          <li><b>Class work:</b> add Class 1 content, Prof. Maracke's article, the ISS case and China's Tiangong.</li>
+          <li><b>Grounding:</b> "ground the data from actual sources, not made up": recheck every section; use real data (Hofstede); source the country checklist.</li>
+          <li><b>Compass:</b> make the scoring rational and grounded; score classmates' definitions.</li>
+          <li><b>Audit and roots:</b> check every source; research why the West is called individualist and the East relational, starting from my own theories.</li>
+          <li><b>Structure:</b> navigation, collapsible parts, kanji hovers.</li>
+        </ol>
+      </div>
+      <div class="aip-card">
+        <span class="aip-n">3</span>
+        <h3>References and validation</h3>
+        <ul class="tight">
+          <li><b>References:</b> every section lists its sources; all are collected under <a href="#sources">Sources</a>.</li>
+          <li><b>Fact checks:</b> claims checked by web search against official texts, encyclopedias (SEP, IEP) and peer-reviewed papers.</li>
+          <li><b>Link audit (20 Oct 2026):</b> about 60 cited links opened one by one: does it load, does it support the claim? Broken or blocked links replaced; wording fixed.</li>
+          <li><b>Real data:</b> Hofstede scores read from the official dataset file; country checklist (90 marks) tied to laws and law-firm trackers.</li>
+          <li><b>Scoring checks:</b> quotes must appear in the text; Claude reads each definition 3 times and the majority wins; tested on sample definitions.</li>
+          <li><b>Labelled where unverified:</b> e.g. the 2026 export-control event (credited to Prof. Maracke), ISS usage shares (Wikipedia), some kanji origins (debated).</li>
+          <li><b>My review:</b> I read each section and asked for rechecks when something looked invented (e.g. "Daodejing 77").</li>
+        </ul>
+      </div>
+      <div class="aip-card">
+        <span class="aip-n">4</span>
+        <h3>Findings and learnings</h3>
+        <ul class="tight">
+          <li><b>First drafts mixed facts with plausible guesses.</b> The first radar ratings and country scores were the AI's own judgement. Grounding changed results a lot (India's binding score went from 0 to 50).</li>
+          <li><b>One AI reading is not stable.</b> The same definition flipped from East to West between two runs. A fixed rubric, quote checks and a 3-run majority fixed it.</li>
+          <li><b>Sources decay.</b> Nearly half of the cited links needed a fix or rewording: dead, blocked, wrong page, or claim not supported.</li>
+          <li><b>The stereotype is weaker than it looks.</b> In 35 Japan–US studies, only 5 support "Japan is more collectivist".</li>
+          <li><b>Lesson for the course:</b> AI saves a lot of time, but fairness and truth still need a human to check the sources.</li>
+        </ul>
+      </div>
     </div>
   </section>
 
@@ -1856,7 +1921,7 @@ footer { padding-block: 32px 64px; border-top: 1px solid var(--line); }
   })();
 
   /* ---------- navigation: one part per view ---------- */
-  var VIEWS = ["home", "course", "reading", "game", "asia", "gov", "vs", "roots", "sources"];
+  var VIEWS = ["home", "course", "reading", "game", "asia", "gov", "vs", "roots", "aipolicy", "sources"];
   var ORDER = ["home", "course", "reading", "game", "asia", "gov", "vs", "roots"];
   var TITLE = { home: "Start here", course: "Class 1 · The course", reading: "Reading · Who holds the keys", game: "Fairness Compass", asia: "1 · Fairness in Asian thought", gov: "2 · AI safety, East & West", vs: "3 · Same meaning?", roots: "4 · Why individual vs relational?" };
   var SUB = { "course-lenses": "course", "course-why": "course", "course-system": "course", "asia-s1": "asia", "asia-s2": "asia", "asia-s3": "asia", "gov-map": "gov", "gov-check": "gov", "keys": "reading", "roots-s1": "roots", "roots-s2": "roots", "roots-s3": "roots", "roots-s4": "roots" };
